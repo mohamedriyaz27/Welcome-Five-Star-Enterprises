@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="All services – documentation, legal, property, online government services at WELCOME ENTERPRISES." />
+  <title>Services | WELCOME ENTERPRISES – TAJ REAL ESTATE</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+</head>
+<body data-page="services">
+  <div id="navbar-root"></div>
+  <header class="page-header"><div class="container"><h1>Our <span style="color:var(--gold-400)">Services</span></h1><p>Complete business solutions under one roof</p></div></header>
+
+  <section class="section">
+    <div class="container">
+      <div class="tabs" id="service-tabs">
+        <button class="tab-btn active" data-cat="all">All Services</button>
+        <button class="tab-btn" data-cat="documentation">Documentation</button>
+        <button class="tab-btn" data-cat="online">Online Services</button>
+        <button class="tab-btn" data-cat="legal">Legal</button>
+        <button class="tab-btn" data-cat="property">Property</button>
+        <button class="tab-btn" data-cat="hajj">Hajj & Umrah</button>
+      </div>
+      <div class="card-grid" id="services-grid"></div>
+    </div>
+  </section>
+
+  <div id="footer-root"></div>
+  <script>
+    const serviceData = {
+      documentation: { icon: "file-text", items: ["E.C Copy / Xerox Services","Copy of Documents","Documentation","Marriage Registration","TP Online Process","DTP & Online Print","Court Case Documentation","Translation Work"] },
+      online: { icon: "globe", items: ["Online Services","PAN Card","Aadhaar Card","Passport Renewal","Motor Insurance","Health Insurance"] },
+      legal: { icon: "scale", items: ["Legal Opinion","Sale Deed","Trust Deed","General Power of Attorney","Settlement Deed","Release Deed","Partition Deed","Partnership Deed","Agreements","Bank MOD Documentation","Will Documentation"] },
+      property: { icon: "building-2", items: ["Land Buying & Selling","House Buying & Selling","Commercial Properties","Real Estate Consultation","Property Documentation","Property Legal Verification"] },
+      hajj: { icon: "plane", items: ["Hajj Booking","Umrah Packages","Travel Assistance","Visa Support"] },
+    };
+    function renderServices(cat) {
+      const grid = document.getElementById("services-grid");
+      let html = "";
+      Object.entries(serviceData).forEach(([key, data]) => {
+        if (cat !== "all" && cat !== key) return;
+        data.items.forEach(item => {
+          html += `<div class="service-card fade-in visible"><div class="icon"><i data-lucide="${data.icon}"></i></div><h3>${item}</h3><p>Professional ${key} service with expert assistance.</p><a href="contact.html" class="btn btn-outline btn-sm" style="margin-top:1rem">Enquire</a></div>`;
+        });
+      });
+      grid.innerHTML = html;
+      lucide.createIcons();
+    }
+    document.querySelectorAll(".tab-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        renderServices(btn.dataset.cat);
+      });
+    });
+    renderServices("all");
+  </script>
+  <script src="js/i18n.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
