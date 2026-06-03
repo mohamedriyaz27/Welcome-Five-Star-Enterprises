@@ -3,38 +3,291 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Legal services – Sale Deed, GPA, Trust Deed, Agreements, Legal Opinion and more." />
-  <title>Legal Services | WELCOME ENTERPRISES – TAJ REAL ESTATE</title>
+  <meta name="description" content="Adv. Farook Ahamed, B.A., B.L., – Advocate High Court & District Court. Civil, criminal, property, attestation, embassy attestation, business registration & legal consultancy." />
+  <meta name="keywords" content="Adv Syed Imran, advocate, High Court, certificate attestation, HRD, embassy attestation, property registration, legal consultant Tamil Nadu" />
+  <title>Legal Services | Adv. Farook Ahamed, B.A., B.L., – WELCOME ENTERPRISES</title>
   <link rel="stylesheet" href="css/main.css" />
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+  <style>
+    .advocate-banner {
+      padding: 8rem 0 4rem;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a365d 50%, #0a1628 100%);
+      border-bottom: 1px solid rgba(201,162,39,0.3);
+    }
+    .advocate-banner-grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      align-items: center;
+    }
+    .advocate-banner h1 { font-size: clamp(2rem, 4vw, 2.75rem); }
+    .advocate-banner .sub { color: var(--gold-400); font-weight: 600; margin: 0.5rem 0; }
+    .advocate-banner .quote { font-style: italic; color: var(--gray-300); margin-bottom: 1.5rem; }
+    .advocate-badge {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--gold-400);
+      border-radius: 50px;
+      font-size: 0.8rem;
+      color: var(--gold-400);
+      margin-bottom: 1rem;
+    }
+    .section-block { padding: 4rem 0; }
+    .section-block.alt { background: var(--navy-900); }
+    .attest-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+    .attest-chip {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      background: var(--navy-800);
+      border: 1px solid var(--navy-600);
+      border-radius: var(--radius);
+      font-size: 0.88rem;
+      transition: var(--transition);
+    }
+    .attest-chip:hover { border-color: var(--gold-400); }
+    .attest-chip i { color: var(--gold-400); width: 16px; }
+    .state-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+    .state-tag {
+      padding: 0.4rem 1rem;
+      border: 1px solid var(--green-400);
+      border-radius: 50px;
+      font-size: 0.82rem;
+      color: var(--green-300);
+    }
+    .why-mini {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .why-mini-item {
+      text-align: center;
+      padding: 1.25rem;
+      background: var(--navy-800);
+      border: 1px solid var(--navy-600);
+      border-radius: var(--radius);
+    }
+    .why-mini-item i { color: var(--gold-400); margin-bottom: 0.5rem; }
+    .faq-item-l { border-bottom: 1px solid var(--navy-600); }
+    .faq-q {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 0;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1rem;
+      text-align: left;
+      cursor: pointer;
+    }
+    .faq-q:hover { color: var(--gold-400); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+    .faq-item-l.open .faq-a { max-height: 150px; padding-bottom: 1rem; }
+    .faq-a p { color: var(--gray-400); font-size: 0.95rem; }
+    @media (max-width: 768px) { .advocate-banner-grid { grid-template-columns: 1fr; } }
+  </style>
 </head>
 <body data-page="legal">
   <div id="navbar-root"></div>
-  <header class="page-header"><div class="container"><h1>Legal <span style="color:var(--gold-400)">Services</span></h1><p>சட்ட சேவைகள் – Expert legal documentation & consultation</p></div></header>
 
-  <section class="section">
-    <div class="container">
-      <div class="card-grid">
-        <div class="service-card fade-in visible"><div class="icon"><i data-lucide="file-signature"></i></div><h3>Sale Deed</h3><p>Property sale deed preparation and registration assistance.</p></div>
-        <div class="service-card fade-in visible"><div class="icon"><i data-lucide="shield"></i></div><h3>Trust Deed</h3><p>Trust formation and deed documentation.</p></div>
-        <div class="service-card fade-in visible"><div class="icon"><i data-lucide="pen-tool"></i></div><h3>General Power of Attorney</h3><p>GPA drafting and notarization support.</p></div>
-        <div class="service-card fade-in visible"><div class="icon"><i data-lucide="handshake"></i></div><h3>Settlement Deed</h3><p>Family and property settlement documentation.</p></div>
-        <div class="service-card fade-in visible"><div class="icon"><i data-lucide="unlock"></i></div><h3>Release Deed</h3><p>Property release and rights transfer deeds.</p></div>
-        <div class="service-card fade-in visible"><div class="icon"><i data-lucide="layout-grid"></i></div><h3>Partition Deed</h3><p>Property partition among family members.</p></div>
-        <div class="service-card fade-in visible"><div class="icon"><i data-lucide="users"></i></div><h3>Partnership Deed</h3><p>Business partnership agreements.</p></div>
-        <div class="service-card fade-in visible"><div class="icon"><i data-lucide="file-check"></i></div><h3>Agreements</h3><p>Rental, sale, and business agreements.</p></div>
-        <div class="service-card fade-in visible"><div class="icon"><i data-lucide="landmark"></i></div><h3>Bank MOD Documentation</h3><p>Memorandum of Deposit for bank loans.</p></div>
-        <div class="service-card fade-in visible"><div class="icon"><i data-lucide="scroll"></i></div><h3>Will Documentation</h3><p>Last will and testament preparation.</p></div>
-        <div class="service-card fade-in visible"><div class="icon"><i data-lucide="book-open"></i></div><h3>Legal Opinion</h3><p>Property title and legal opinion reports.</p></div>
-        <div class="service-card fade-in visible"><div class="icon"><i data-lucide="heart"></i></div><h3>Marriage Registration</h3><p>Legal marriage registration services.</p></div>
+  <header class="advocate-banner">
+    <div class="container advocate-banner-grid">
+      <div>
+        <span class="advocate-badge">Advocate · High Court · District Court</span>
+        <h1>Adv. Farook Ahamed, B.A., B.L.,</h1>
+        <p class="sub">Advocate | High Court | District Court</p>
+        <p class="quote">"Committed to Justice. Dedicated to You."</p>
+        <p style="color:var(--gray-300);max-width:600px;margin-bottom:1.5rem">Dedicated advocate providing legal services in civil, criminal, property, documentation, family matters, attestation services, embassy services, and legal consultancy with a commitment to justice, transparency, and client satisfaction.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:0.75rem">
+          <a href="contact.html" class="btn btn-primary"><i data-lucide="calendar"></i> Book Consultation</a>
+          <a href="https://wa.me/919003088794" class="btn btn-green" target="_blank"><i data-lucide="message-circle"></i> WhatsApp Now</a>
+          <a href="tel:9003088794" class="btn btn-outline"><i data-lucide="phone"></i> Call Now</a>
+          <a href="advocate/index.html" class="btn btn-outline">Full Advocate Website →</a>
+        </div>
       </div>
-      <div style="text-align:center;margin-top:3rem">
-        <a href="contact.html" class="btn btn-primary">Book Legal Consultation</a>
+      <div style="text-align:center">
+        <div style="width:180px;height:180px;border:2px solid var(--gold-400);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto;font-size:3rem;color:var(--gold-400);background:rgba(201,162,39,0.1)">⚖</div>
+        <p style="margin-top:1rem;color:var(--gray-400);font-size:0.9rem">90030 88794</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section class="section-block" id="about-advocate">
+    <div class="container contact-grid">
+      <div>
+        <h2 class="section-title">About <span>The Advocate</span></h2>
+        <p style="color:var(--gray-300);margin-bottom:1rem">Dedicated legal professional providing reliable legal guidance and representation across civil, criminal, family, property, and documentation matters.</p>
+        <p style="color:var(--gray-400)">Focused on delivering practical legal solutions while protecting client rights and interests.</p>
+      </div>
+      <div class="why-mini">
+        <div class="why-mini-item"><i data-lucide="landmark"></i><strong>High Court</strong><p style="font-size:0.8rem;color:var(--gray-500)">Experienced practice</p></div>
+        <div class="why-mini-item"><i data-lucide="shield-check"></i><strong>District Court</strong><p style="font-size:0.8rem;color:var(--gray-500)">Full representation</p></div>
+        <div class="why-mini-item"><i data-lucide="globe"></i><strong>Embassy Services</strong><p style="font-size:0.8rem;color:var(--gray-500)">GCC & international</p></div>
+        <div class="why-mini-item"><i data-lucide="stamp"></i><strong>Attestation</strong><p style="font-size:0.8rem;color:var(--gray-500)">HRD & MEA</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRACTICE AREAS -->
+  <section class="section-block alt" id="practice">
+    <div class="container">
+      <h2 class="section-title">Practice <span>Areas</span></h2>
+      <p class="section-subtitle">Comprehensive legal services across all major domains</p>
+      <div class="card-grid" style="margin-top:2rem">
+        <div class="service-card fade-in visible"><div class="icon"><i data-lucide="landmark"></i></div><h3>Civil Cases</h3><ul style="margin-top:0.75rem"><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Property disputes</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Recovery suits</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Injunction matters</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Contract disputes</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Consumer cases</li></ul></div>
+        <div class="service-card fade-in visible"><div class="icon"><i data-lucide="gavel"></i></div><h3>Criminal Cases</h3><ul style="margin-top:0.75rem"><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Bail petitions</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Criminal defense</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Quash petitions</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Trial matters</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Legal representation</li></ul></div>
+        <div class="service-card fade-in visible"><div class="icon"><i data-lucide="home"></i></div><h3>Property Registration</h3><ul style="margin-top:0.75rem"><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Sale deed registration</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Settlement deeds</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Gift deeds</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Property verification</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Legal opinions</li></ul></div>
+        <div class="service-card fade-in visible"><div class="icon"><i data-lucide="file-text"></i></div><h3>Documentation Work</h3><ul style="margin-top:0.75rem"><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Affidavits</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Agreements</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Power of Attorney</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Legal notices</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Will preparation</li></ul></div>
+        <div class="service-card fade-in visible"><div class="icon"><i data-lucide="heart"></i></div><h3>Family & Divorce Cases</h3><ul style="margin-top:0.75rem"><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Divorce petitions</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Child custody</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Maintenance cases</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Mutual consent divorce</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Family settlements</li></ul></div>
+        <div class="service-card fade-in visible"><div class="icon"><i data-lucide="stamp"></i></div><h3>Notary Services</h3><ul style="margin-top:0.75rem"><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Notary attestation</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Oath administration</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Affidavit notarization</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Document certification</li></ul></div>
+        <div class="service-card fade-in visible"><div class="icon"><i data-lucide="file-signature"></i></div><h3>Sale Deed & Legal Deeds</h3><ul style="margin-top:0.75rem"><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Sale Deed</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Trust Deed</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">GPA / Settlement / Release</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Partition & Partnership Deed</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Bank MOD & Will</li></ul></div>
+        <div class="service-card fade-in visible"><div class="icon"><i data-lucide="briefcase"></i></div><h3>Legal Consultancy</h3><ul style="margin-top:0.75rem"><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Legal opinion & advice</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Court case consultation</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Property legal verification</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Marriage registration</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">End-to-end legal support</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATE ATTESTATION -->
+  <section class="section-block" id="attestation">
+    <div class="container">
+      <h2 class="section-title">Certificate Attestation & <span>HRD Services</span></h2>
+      <p class="section-subtitle">Complete assistance for educational, personal, and professional certificates</p>
+      <div class="attest-grid">
+        <div class="attest-chip"><i data-lucide="graduation-cap"></i> SSLC Certificates</div>
+        <div class="attest-chip"><i data-lucide="graduation-cap"></i> HSC Certificates</div>
+        <div class="attest-chip"><i data-lucide="graduation-cap"></i> CBSE Certificates</div>
+        <div class="attest-chip"><i data-lucide="award"></i> ITI Certificates</div>
+        <div class="attest-chip"><i data-lucide="award"></i> Diploma Certificates</div>
+        <div class="attest-chip"><i data-lucide="award"></i> Degree Certificates</div>
+        <div class="attest-chip"><i data-lucide="award"></i> PG Certificates</div>
+        <div class="attest-chip"><i data-lucide="heart"></i> Marriage Certificates</div>
+        <div class="attest-chip"><i data-lucide="baby"></i> Birth Certificates</div>
+        <div class="attest-chip"><i data-lucide="briefcase"></i> Experience Certificates</div>
+        <div class="attest-chip"><i data-lucide="shield"></i> PCC Certificates</div>
+        <div class="attest-chip"><i data-lucide="file"></i> Transfer Certificates</div>
+        <div class="attest-chip"><i data-lucide="file-text"></i> Mark Sheets</div>
+        <div class="attest-chip"><i data-lucide="fingerprint"></i> Fingerprint Attestation</div>
+        <div class="attest-chip"><i data-lucide="file-check"></i> Private Diploma Certificates</div>
+      </div>
+      <h3 style="margin-top:2.5rem;color:var(--gold-400);font-size:1.1rem">Government Departments</h3>
+      <div class="attest-grid" style="max-width:700px">
+        <div class="attest-chip"><i data-lucide="building"></i> HRD</div>
+        <div class="attest-chip"><i data-lucide="building"></i> Home Department</div>
+        <div class="attest-chip"><i data-lucide="globe"></i> External Affairs</div>
+        <div class="attest-chip"><i data-lucide="flag"></i> Embassy Attestation</div>
+      </div>
+      <h3 style="margin-top:2rem;color:var(--gold-400);font-size:1.1rem">Coverage States</h3>
+      <div class="state-tags">
+        <span class="state-tag">Tamil Nadu</span><span class="state-tag">Kerala</span><span class="state-tag">Karnataka</span>
+        <span class="state-tag">Andhra Pradesh</span><span class="state-tag">Puducherry</span><span class="state-tag">Maharashtra</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- EMBASSY -->
+  <section class="section-block alt" id="embassy">
+    <div class="container">
+      <h2 class="section-title">Embassy & <span>International Services</span></h2>
+      <div class="card-grid" style="margin-top:2rem">
+        <div class="service-card fade-in visible"><div class="icon"><i data-lucide="flag"></i></div><h3>Embassy Attestation</h3><ul style="margin-top:0.75rem"><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">UAE · Saudi Arabia · Kuwait</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Oman · Bahrain · Qatar</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Europe</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Other GCC Countries</li></ul></div>
+        <div class="service-card fade-in visible"><div class="icon"><i data-lucide="plane"></i></div><h3>Visa Documentation</h3><ul style="margin-top:0.75rem"><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Employment Visa Documents</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Family Visa Documents</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Educational Documents</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Commercial Documents</li></ul></div>
+        <div class="service-card fade-in visible"><div class="icon"><i data-lucide="languages"></i></div><h3>Translation Services</h3><ul style="margin-top:0.75rem"><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Arabic Translation</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">English Translation</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Multilingual Translation</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Certified Translation</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUSINESS -->
+  <section class="section-block" id="business">
+    <div class="container">
+      <h2 class="section-title">Business & <span>Registration Services</span></h2>
+      <div class="card-grid" style="margin-top:2rem">
+        <div class="service-card fade-in visible"><div class="icon"><i data-lucide="building-2"></i></div><h3>Business Registration</h3><ul style="margin-top:0.75rem"><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Proprietorship Registration</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Partnership Registration</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">LLP Registration</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Company Registration</li></ul></div>
+        <div class="service-card fade-in visible"><div class="icon"><i data-lucide="clipboard-check"></i></div><h3>Compliance Services</h3><ul style="margin-top:0.75rem"><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">MSME Registration</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Trade License</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Professional Tax</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Business Documentation</li></ul></div>
+        <div class="service-card fade-in visible"><div class="icon"><i data-lucide="lightbulb"></i></div><h3>Consultancy Services</h3><ul style="margin-top:0.75rem"><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Overseas Education Consultancy</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Marriage Registration Assistance</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Certificate Verification</li><li style="color:var(--gray-400);font-size:0.88rem;padding:0.2rem 0">Legal Documentation Support</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section class="section-block alt">
+    <div class="container">
+      <h2 class="section-title text-center" style="text-align:center">Why <span>Choose Us</span></h2>
+      <div class="why-mini" style="margin-top:2rem">
+        <div class="why-mini-item"><i data-lucide="award"></i><strong>Experienced Legal Guidance</strong></div>
+        <div class="why-mini-item"><i data-lucide="eye"></i><strong>Transparent Process</strong></div>
+        <div class="why-mini-item"><i data-lucide="lock"></i><strong>Confidential Services</strong></div>
+        <div class="why-mini-item"><i data-lucide="clock"></i><strong>Timely Updates</strong></div>
+        <div class="why-mini-item"><i data-lucide="wallet"></i><strong>Affordable Consultation</strong></div>
+        <div class="why-mini-item"><i data-lucide="file-check"></i><strong>Trusted Documentation Support</strong></div>
+        <div class="why-mini-item"><i data-lucide="zap"></i><strong>Fast Attestation Process</strong></div>
+        <div class="why-mini-item"><i data-lucide="route"></i><strong>End-to-End Assistance</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section-block">
+    <div class="container">
+      <h2 class="section-title text-center" style="text-align:center">Our Working <span>Process</span></h2>
+      <div class="stats-grid" style="margin-top:2rem">
+        <div class="stat-card"><div class="number" style="font-size:1.5rem">01</div><div class="label">Initial Consultation</div></div>
+        <div class="stat-card"><div class="number" style="font-size:1.5rem">02</div><div class="label">Document Verification</div></div>
+        <div class="stat-card"><div class="number" style="font-size:1.5rem">03</div><div class="label">Legal Review</div></div>
+        <div class="stat-card"><div class="number" style="font-size:1.5rem">04</div><div class="label">Filing & Processing</div></div>
+        <div class="stat-card"><div class="number" style="font-size:1.5rem">05</div><div class="label">Updates & Follow-up</div></div>
+        <div class="stat-card"><div class="number" style="font-size:1.5rem">06</div><div class="label">Successful Completion</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section-block alt" id="faq">
+    <div class="container" style="max-width:800px">
+      <h2 class="section-title text-center" style="text-align:center">Frequently Asked <span>Questions</span></h2>
+      <div style="margin-top:2rem" id="faq-list">
+        <div class="faq-item-l"><button class="faq-q">How long does certificate attestation take? <i data-lucide="chevron-down"></i></button><div class="faq-a"><p>Processing time depends on the certificate type and destination country.</p></div></div>
+        <div class="faq-item-l"><button class="faq-q">Do you provide embassy attestation? <i data-lucide="chevron-down"></i></button><div class="faq-a"><p>Yes, we provide complete embassy attestation assistance for GCC and other countries.</p></div></div>
+        <div class="faq-item-l"><button class="faq-q">Can you assist with property registration? <i data-lucide="chevron-down"></i></button><div class="faq-a"><p>Yes, complete legal support is provided for registration and verification.</p></div></div>
+        <div class="faq-item-l"><button class="faq-q">Do you handle family court matters? <i data-lucide="chevron-down"></i></button><div class="faq-a"><p>Yes, including divorce, maintenance, custody, and settlement cases.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT CTA -->
+  <section class="section-block">
+    <div class="container" style="text-align:center">
+      <p style="font-family:var(--font-display);font-size:1.5rem;color:var(--gold-400);margin-bottom:0.5rem">Your Rights. Our Responsibility.</p>
+      <p style="color:var(--gray-400);margin-bottom:1.5rem">Advocate | Legal Consultant | Documentation & Attestation Services</p>
+      <p style="margin-bottom:1.5rem"><strong>Phone:</strong> <a href="tel:9003088794" style="color:var(--gold-400)">90030 88794</a> · <strong>WhatsApp:</strong> <a href="https://wa.me/919003088794" style="color:var(--gold-400)">90030 88794</a></p>
+      <div style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center">
+        <a href="contact.html" class="btn btn-primary">Contact Us</a>
+        <a href="advocate/index.html" class="btn btn-outline">Premium Advocate Website</a>
+      </div>
+      <div class="map-container" style="margin-top:2.5rem;max-width:800px;margin-inline:auto">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.702223026542!2d80.0993153735894!3d12.990887914458124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52613126e7ec65%3A0x3fd801522cc1bdef!2sWelcome%20Enterprises!5e0!3m2!1sen!2sin!4v1780422949730!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
   </section>
 
   <div id="footer-root"></div>
+  <script>
+    document.querySelectorAll(".faq-q").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const item = btn.closest(".faq-item-l");
+        const open = item.classList.contains("open");
+        document.querySelectorAll(".faq-item-l").forEach(i => i.classList.remove("open"));
+        if (!open) item.classList.add("open");
+      });
+    });
+  </script>
   <script src="js/i18n.js"></script>
   <script src="js/components.js"></script>
   <script src="js/main.js"></script>

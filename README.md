@@ -3,7 +3,7 @@
 Premium business website for real estate, legal documentation, online government services, and Hajj & Umrah packages.
 
 **Proprietor:** S.T. Syed Imran, M.A.  
-**Contact:** 90030 88794 · 80562 56133 · 86088 75658
+**Contact:** 90030 88794 · 80562 56133 · 
 
 ---
 
@@ -22,6 +22,12 @@ Premium business website for real estate, legal documentation, online government
 ---
 
 ## Features
+
+### Advocate Website (`/advocate/`)
+- Premium **black + gold** law firm design for **Adv. Farook Ahamed, B.A., B.L.,**
+- Practice areas, attestation, embassy, business registration
+- FAQ, testimonials, contact form, WhatsApp & call buttons
+- Open: `advocate/index.html`
 
 ### Public Website
 - Responsive multi-page design (dark blue, gold, green theme)
