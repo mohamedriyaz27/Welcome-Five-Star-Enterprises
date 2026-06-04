@@ -1,0 +1,40 @@
+{
+  "practice_areas": {
+    "civil": ["Property disputes", "Recovery suits", "Injunction matters", "Contract disputes", "Consumer cases"],
+    "criminal": ["Bail petitions", "Criminal defense", "Quash petitions", "Trial matters", "Legal representation"],
+    "property": ["Sale deed registration", "Settlement deeds", "Gift deeds", "Property verification", "Legal opinions"],
+    "documentation": ["Affidavits", "Agreements", "Power of Attorney", "Legal notices", "Will preparation"],
+    "family": ["Divorce petitions", "Child custody", "Maintenance cases", "Mutual consent divorce", "Family settlements"],
+    "notary": ["Notary attestation", "Oath administration", "Affidavit notarization", "Document certification"],
+    "legal_consultancy": ["Legal opinion & advice", "Court case consultation", "Property legal verification", "Marriage registration assistance", "End-to-end legal support"]
+  },
+  "attestation": [
+    "SSLC Certificates", "HSC Certificates", "CBSE Certificates", "ITI Certificates",
+    "Diploma Certificates", "Degree Certificates", "PG Certificates", "Marriage Certificates",
+    "Birth Certificates", "Experience Certificates", "PCC Certificates", "Transfer Certificates",
+    "Mark Sheets", "Fingerprint Attestation", "Private Diploma Certificates"
+  ],
+  "departments": ["HRD", "Home Department", "External Affairs", "Embassy Attestation"],
+  "coverage_states": ["Tamil Nadu", "Kerala", "Karnataka", "Andhra Pradesh", "Puducherry", "Maharashtra"],
+  "embassy_countries": ["UAE", "Saudi Arabia", "Kuwait", "Oman", "Bahrain", "Qatar", "Europe", "Other GCC Countries"],
+  "visa_docs": ["Employment Visa Documents", "Family Visa Documents", "Educational Documents", "Commercial Documents"],
+  "translation": ["Arabic Translation", "English Translation", "Multilingual Translation", "Certified Translation"],
+  "business_registration": ["Proprietorship Registration", "Partnership Registration", "LLP Registration", "Company Registration"],
+  "compliance": ["MSME Registration", "Trade License", "Professional Tax", "Business Documentation"],
+  "consultancy": ["Overseas Education Consultancy", "Marriage Registration Assistance", "Certificate Verification", "Legal Documentation Support"],
+  "why_choose": [
+    "Experienced Legal Guidance", "Transparent Process", "Confidential Services", "Timely Updates",
+    "Affordable Consultation", "Trusted Documentation Support", "Fast Attestation Process", "End-to-End Assistance"
+  ],
+  "process": [
+    "Initial Consultation", "Document Verification", "Legal Review",
+    "Filing & Processing", "Updates & Follow-up", "Successful Completion"
+  ],
+  "advocate": {
+    "name": "Adv. Farook Ahamed, B.A., B.L.,",
+    "title": "Advocate – High Court & District Court",
+    "phone": "9003088794",
+    "whatsapp": "9190030888794",
+    "tagline": "Committed to Justice. Dedicated to You."
+  }
+}

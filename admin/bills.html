@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>Bill Print | Admin</title>
+  <link rel="stylesheet" href="../css/main.css" />
+  <link rel="stylesheet" href="../css/admin.css" />
+  <link rel="stylesheet" href="../css/print.css" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+</head>
+<body>
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="brand"><h2>WELCOME ENTERPRISES</h2><p style="font-size:0.75rem;color:var(--gray-400)">Admin Panel</p></div>
+      <nav class="admin-nav">
+        <a href="dashboard.html"><i data-lucide="layout-dashboard"></i> Dashboard</a>
+        <a href="bills.html" class="active"><i data-lucide="printer"></i> Bill Print</a>
+        <a href="payments.html"><i data-lucide="qr-code"></i> QR Payment</a>
+        <a href="sales-report.html"><i data-lucide="bar-chart-3"></i> Sales Report</a>
+        <a href="../index.html"><i data-lucide="globe"></i> View Website</a>
+        <a href="#" id="logout-btn"><i data-lucide="log-out"></i> Logout</a>
+      </nav>
+    </aside>
+    <main class="admin-main">
+      <div class="admin-header"><h1>Bill Print</h1><p style="color:var(--gray-400)">Create, preview, print & save bills</p></div>
+
+      <div class="admin-card">
+        <h3>Bill Details</h3>
+        <div class="form-row">
+          <div class="form-group"><label>Bill No</label><input id="bill-no" /></div>
+          <div class="form-group"><label>Customer Name</label><input id="customer-name" placeholder="Customer name" /></div>
+          <div class="form-group"><label>Phone</label><input id="customer-phone" placeholder="Phone number" /></div>
+        </div>
+        <label style="display:flex;align-items:center;gap:0.5rem;margin-bottom:1rem;color:var(--gray-300)">
+          <input type="checkbox" id="include-gst" /> Include GST (18%)
+        </label>
+
+        <table class="data-table">
+          <thead><tr><th>Description</th><th>Qty</th><th>Rate (₹)</th><th>Amount</th><th></th></tr></thead>
+          <tbody id="bill-items-body"></tbody>
+        </table>
+        <button type="button" id="add-item-btn" class="btn btn-outline btn-sm" style="margin-top:1rem">+ Add Item</button>
+
+        <div style="display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.5rem;align-items:center">
+          <strong style="color:var(--gold-400);font-size:1.2rem">Total: <span id="preview-total">₹0.00</span></strong>
+          <button id="print-btn" class="btn btn-primary"><i data-lucide="printer"></i> Print Bill</button>
+          <button id="save-bill-btn" class="btn btn-green">Save Bill</button>
+        </div>
+      </div>
+
+      <div class="admin-card bill-preview no-print">
+        <h3>Bill Preview</h3>
+        <div id="bill-preview-content"></div>
+      </div>
+
+      <div class="admin-card">
+        <h3>Bill History</h3>
+        <table class="data-table">
+          <thead><tr><th>Bill No</th><th>Date</th><th>Customer</th><th>Total</th><th>Action</th></tr></thead>
+          <tbody id="bill-history-body"></tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+  <script src="../js/admin.js"></script>
+  <script src="../js/bills.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", () => lucide.createIcons());</script>
+</body>
+</html>
