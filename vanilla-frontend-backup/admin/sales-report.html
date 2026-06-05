@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>Monthly Sales Report | Admin</title>
+  <link rel="stylesheet" href="../css/main.css" />
+  <link rel="stylesheet" href="../css/admin.css" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
+</head>
+<body>
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="brand"><h2>WELCOME ENTERPRISES</h2><p style="font-size:0.75rem;color:var(--gray-400)">Admin Panel</p></div>
+      <nav class="admin-nav">
+        <a href="dashboard.html"><i data-lucide="layout-dashboard"></i> Dashboard</a>
+        <a href="bills.html"><i data-lucide="printer"></i> Bill Print</a>
+        <a href="payments.html"><i data-lucide="qr-code"></i> QR Payment</a>
+        <a href="sales-report.html" class="active"><i data-lucide="bar-chart-3"></i> Sales Report</a>
+        <a href="../index.html"><i data-lucide="globe"></i> View Website</a>
+        <a href="#" id="logout-btn"><i data-lucide="log-out"></i> Logout</a>
+      </nav>
+    </aside>
+    <main class="admin-main">
+      <div class="admin-header">
+        <h1>Monthly Sales Report</h1>
+        <div style="display:flex;gap:0.75rem;flex-wrap:wrap">
+          <select id="report-month" style="padding:0.5rem 1rem;background:var(--navy-800);border:1px solid var(--navy-600);color:#fff;border-radius:8px">
+            <option value="">All Months</option>
+          </select>
+          <button id="refresh-report-btn" class="btn btn-outline btn-sm">Refresh</button>
+          <button id="export-csv-btn" class="btn btn-green btn-sm">Export CSV</button>
+          <button id="print-report-btn" class="btn btn-primary btn-sm">Print Report</button>
+        </div>
+      </div>
+
+      <div class="stats-row">
+        <div class="admin-stat"><div class="value" id="report-total-sales">₹0</div><div class="label">Total Sales</div></div>
+        <div class="admin-stat"><div class="value" id="report-total-transactions">0</div><div class="label">Transactions</div></div>
+        <div class="admin-stat"><div class="value" id="report-avg-sale">₹0</div><div class="label">Avg. per Transaction</div></div>
+      </div>
+
+      <div class="admin-card">
+        <h3>Sales Chart</h3>
+        <div class="chart-container"><canvas id="sales-chart"></canvas></div>
+      </div>
+
+      <div class="admin-card">
+        <h3>Monthly Breakdown</h3>
+        <table class="data-table">
+          <thead><tr><th>Month</th><th>Transactions</th><th>Bills</th><th>Payments</th><th>Total Sales</th></tr></thead>
+          <tbody id="sales-report-body"></tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+  <script src="../js/api.js"></script>
+  <script src="../js/admin.js"></script>
+  <script src="../js/sales-report.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", () => lucide.createIcons());</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>Admin Login | WELCOME ENTERPRISES</title>
+  <link rel="stylesheet" href="../css/main.css" />
+  <link rel="stylesheet" href="../css/admin.css" />
+</head>
+<body>
+  <div class="login-page">
+    <div class="login-box">
+      <h1 style="color:var(--gold-400)">Admin Panel</h1>
+      <p class="subtitle">WELCOME ENTERPRISES – TAJ REAL ESTATE</p>
+      <form id="login-form">
+        <div class="form-group"><label>Username</label><input id="username" required autocomplete="username" /></div>
+        <div class="form-group"><label>Password</label><input id="password" type="password" required autocomplete="current-password" /></div>
+        <p id="login-error" style="color:#f87171;font-size:0.85rem;display:none;margin-bottom:1rem">Invalid credentials</p>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Login</button>
+      </form>
+      <p style="text-align:center;margin-top:1.5rem;font-size:0.8rem;color:var(--gray-500)">
+        Demo: admin / welcome@2026<br />
+        <a href="../index.html" style="color:var(--gold-400)">← Back to Website</a>
+      </p>
+    </div>
+  </div>
+  <script src="../js/api.js"></script>
+  <script src="../js/admin.js"></script>
+</body>
+</html>

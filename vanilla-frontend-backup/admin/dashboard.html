@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>Dashboard | Admin</title>
+  <link rel="stylesheet" href="../css/main.css" />
+  <link rel="stylesheet" href="../css/admin.css" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+</head>
+<body>
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="brand"><h2>WELCOME ENTERPRISES</h2><p style="font-size:0.75rem;color:var(--gray-400)">Admin Panel</p></div>
+      <nav class="admin-nav">
+        <a href="dashboard.html" class="active"><i data-lucide="layout-dashboard"></i> Dashboard</a>
+        <a href="bills.html"><i data-lucide="printer"></i> Bill Print</a>
+        <a href="payments.html"><i data-lucide="qr-code"></i> QR Payment</a>
+        <a href="sales-report.html"><i data-lucide="bar-chart-3"></i> Sales Report</a>
+        <a href="../index.html"><i data-lucide="globe"></i> View Website</a>
+        <a href="#" id="logout-btn"><i data-lucide="log-out"></i> Logout</a>
+      </nav>
+    </aside>
+    <main class="admin-main">
+      <div class="admin-header">
+        <h1>Dashboard</h1>
+        <span style="color:var(--gray-400)">Welcome, Admin</span>
+      </div>
+      <div class="stats-row" id="dash-stats"></div>
+      <div class="admin-card">
+        <h3>Recent Inquiries</h3>
+        <table class="data-table"><thead><tr><th>Date</th><th>Name</th><th>Phone</th><th>Message</th><th>Status</th></tr></thead><tbody id="inquiries-body"></tbody></table>
+      </div>
+      <div class="admin-card">
+        <h3>Quick Actions</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:1rem">
+          <a href="bills.html" class="btn btn-primary">Create Bill</a>
+          <a href="payments.html" class="btn btn-green">Record Payment</a>
+          <a href="sales-report.html" class="btn btn-outline">View Sales Report</a>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="../js/api.js"></script>
+  <script src="../js/admin.js"></script>
+  <script>
+    async function loadDashboard() {
+      try {
+        const [inqStatsRes, salesReportRes, inquiriesRes] = await Promise.all([
+          apiFetch("/inquiries/stats"),
+          apiFetch("/reports/monthly-sales"),
+          apiFetch("/inquiries?limit=10")
+        ]);
+
+        let totalInquiries = 0;
+        if (inqStatsRes.success) {
+          totalInquiries = Object.values(inqStatsRes.data).reduce((a, b) => a + b, 0);
+        }
+
+        let totalSales = 0;
+        let totalBillsCount = 0;
+        let totalPaymentsCount = 0;
+        if (salesReportRes.success) {
+          salesReportRes.data.forEach(item => {
+            totalSales += item.total_sales;
+            totalBillsCount += item.bills;
+            totalPaymentsCount += item.payments;
+          });
+        }
+
+        document.getElementById("dash-stats").innerHTML = `
+          <div class="admin-stat"><div class="value">${totalBillsCount}</div><div class="label">Total Bills</div></div>
+          <div class="admin-stat"><div class="value">${totalPaymentsCount}</div><div class="label">Payments</div></div>
+          <div class="admin-stat"><div class="value">${formatCurrency(totalSales)}</div><div class="label">Total Revenue</div></div>
+          <div class="admin-stat"><div class="value">${totalInquiries}</div><div class="label">Inquiries</div></div>`;
+
+        if (inquiriesRes.success) {
+          const inquiries = inquiriesRes.data.items;
+          document.getElementById("inquiries-body").innerHTML = inquiries.map(i => `
+            <tr>
+              <td>${formatDate(i.createdAt)}</td>
+              <td>${i.customerName}</td>
+              <td>${i.mobile}</td>
+              <td>${(i.message || "").slice(0, 50)}</td>
+              <td><span class="tag">${i.status || "new"}</span></td>
+            </tr>
+          `).join("") || '<tr><td colspan="5">No inquiries yet</td></tr>';
+        }
+      } catch (err) {
+        console.error("Error loading dashboard:", err);
+      }
+    }
+    document.addEventListener("DOMContentLoaded", loadDashboard);
+  </script>
+  <script>document.addEventListener("DOMContentLoaded", () => lucide.createIcons());</script>
+</body>
+</html>

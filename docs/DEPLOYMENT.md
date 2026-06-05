@@ -1,141 +1,71 @@
-# Deployment Guide
+# Welcome Enterprises – Taj Real Estate Deployment Guide
 
-## WELCOME ENTERPRISES – TAJ REAL ESTATE
+This document describes how to deploy the Node.js backend and connect it to MongoDB Atlas.
 
 ---
 
-## Option 1: Vercel (Frontend – Static Site)
+## 1. Database Setup (MongoDB Atlas)
+1. Sign up/Log in to [MongoDB Atlas](https://www.mongodb.com/cloud/atlas).
+2. Create a new shared cluster (free tier is sufficient).
+3. Under **Database Access**, create a user with read/write privileges (choose a secure password).
+4. Under **Network Access**, add an IP entry (add `0.0.0.0/32` for anywhere, or your server's static IP).
+5. Click **Connect** → **Connect your application** → Copy the Connection String.
+   It looks like:
+   `mongodb+srv://<username>:<password>@cluster0.xxxx.mongodb.net/welcome_enterprises?retryWrites=true&w=majority`
 
-### Prerequisites
-- [Vercel account](https://vercel.com)
-- [Git](https://git-scm.com) repository
+---
 
-### Steps
+## 2. Environment Configurations
+Create a `.env` file in the `backend/` directory of the application:
+```env
+PORT=5000
+NODE_ENV=production
+MONGO_URI=mongodb+srv://<username>:<password>@cluster0.xxxx.mongodb.net/welcome_enterprises?retryWrites=true&w=majority
+JWT_SECRET=use_a_long_random_string_here
+JWT_REFRESH_SECRET=use_another_long_random_string_here
+JWT_ACCESS_EXPIRES=15m
+JWT_REFRESH_EXPIRES=7d
+CLIENT_ORIGIN=https://your-frontend-domain.com
+```
 
-1. **Push code to GitHub**
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial website for Welcome Enterprises"
-   git remote add origin https://github.com/YOUR_USERNAME/welcome-enterprises.git
-   git push -u origin main
-   ```
+---
 
-2. **Import on Vercel**
-   - Go to [vercel.com/new](https://vercel.com/new)
-   - Import your GitHub repository
-   - Framework Preset: **Other**
-   - Root Directory: `.` (project root)
-   - Build Command: leave empty
-   - Output Directory: `.`
-
-3. **Deploy**
-   - Click **Deploy**
-   - Your site will be live at `https://your-project.vercel.app`
-
-4. **Custom Domain**
-   - Vercel Dashboard → Project → Settings → Domains
-   - Add your domain (e.g. `welcomeenterprises.in`)
-
-### Local Preview
+## 3. Seed Initial Admin Account
+Before starting the backend for the first time, run the seeding script to populate the database with your first administrator account:
 ```bash
-npx serve .
-# Open http://localhost:3000
+cd backend
+npm run seed
 ```
+This script reads the credentials from `.env` (or defaults to `admin@welcomeenterprises.com` / `welcome@2026`) and saves the hashed admin user record into MongoDB.
 
 ---
 
-## Option 2: Render (Django Backend)
-
-### Prerequisites
-- [Render account](https://render.com)
-- MySQL database (Render PostgreSQL or external MySQL)
-
-### Steps
-
-1. **Create `render.yaml`** in project root (see `backend/render.yaml`)
-
-2. **Create Web Service on Render**
-   - New → Web Service
-   - Connect GitHub repo
-   - Environment: **Python 3**
-   - Build Command: `pip install -r backend/requirements.txt && python backend/manage.py collectstatic --noinput`
-   - Start Command: `gunicorn welcome_api.wsgi:application`
-
-3. **Environment Variables**
-   ```
-   DATABASE_URL=mysql://user:pass@host/db
-   SECRET_KEY=your-secret-key
-   ALLOWED_HOSTS=your-app.onrender.com
-   CORS_ALLOWED_ORIGINS=https://your-vercel-app.vercel.app
-   ```
-
-4. **Create MySQL Database on Render**
-   - New → PostgreSQL or use external MySQL
-   - Run `backend/schema.sql` to create tables
-
----
-
-## Option 3: Netlify / GitHub Pages
-
-### GitHub Pages
+## 4. Run Locally
+To run the Node.js backend locally:
 ```bash
-# Enable in repo Settings → Pages → Source: main branch
+cd backend
+npm install
+npm run dev
 ```
-
-### Netlify
-- Drag & drop project folder to [app.netlify.com/drop](https://app.netlify.com/drop)
-- Or connect Git repo
-
----
-
-## Connect Frontend to Backend
-
-Update API base URL in `js/api.js` (create when backend is live):
-
-```javascript
-const API_BASE = "https://your-api.onrender.com/api/v1";
-```
-
-Replace `localStorage` calls in admin scripts with `fetch()` to Django API.
+The server will boot up and log:
+`MongoDB Atlas connected successfully`
+`Welcome Enterprises API running on port 5000`
 
 ---
 
-## Admin Access (Current Static Version)
+## 5. Deployment Options
 
-| Field | Value |
-|-------|-------|
-| URL | `/admin/login.html` |
-| Username | `admin` |
-| Password | `welcome@2026` |
+### Option A: Railway (Recommended)
+1. Link your GitHub repository.
+2. In Railway, click **New Project** → **Deploy from GitHub**.
+3. Select your repository.
+4. Add all Variables from `.env` under the **Variables** tab.
+5. Railway reads the `backend/package.json` and start scripts automatically.
 
-**Change credentials before production!**
-
----
-
-## SEO Checklist
-
-- [x] Meta descriptions on all pages
-- [x] Semantic HTML structure
-- [x] `robots.txt` and `sitemap.xml`
-- [ ] Submit sitemap to Google Search Console
-- [ ] Add Google Analytics
-- [ ] Replace placeholder map with exact office coordinates
-
----
-
-## Performance Tips
-
-1. Compress images in `/assets/`
-2. Enable CDN caching on Vercel
-3. Add your logo to `assets/logo.png` and update navbar
-4. Use lazy loading (already on property images)
-
----
-
-## Post-Deployment
-
-1. Update phone numbers and UPI ID in `js/main.js` and `admin/payments.html`
-2. Update Google Maps embed with exact office location
-3. Change admin password
-4. Set up email for inquiries (Django + SendGrid/SMTP)
+### Option B: Render
+1. Go to Render.com and create a **Web Service**.
+2. Connect your GitHub repository.
+3. Set the **Root Directory** to `backend`.
+4. Set **Build Command** to `npm install`.
+5. Set **Start Command** to `node server.js`.
+6. Add environment variables under **Environment**.
