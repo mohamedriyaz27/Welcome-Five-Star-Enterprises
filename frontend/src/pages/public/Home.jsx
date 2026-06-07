@@ -327,7 +327,7 @@ export function Home() {
       {/* Attestations */}
       <section className="section premium-block" id="attestation">
         <div className="container">
-          <h2 className="section-title fade-in visible">Certificate Attestation & <span>HRD Services</span></h2>
+          <h2 className="section-title fade-in visible">N.Gopinath<br/>Certificate Attestation & <span>HRD Services</span></h2>
           <p className="section-subtitle fade-in visible">Complete assistance for educational, personal, and professional certificates</p>
           <div className="attest-grid fade-in visible">
             <div className="attest-chip"><GraduationCap /> SSLC Certificates</div>
