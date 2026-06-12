@@ -14,7 +14,7 @@ const translations = {
     nav_contact: "Contact",
     hero_badge: "Trusted Since Years — Premium Services",
     hero_title: "Your Complete Solution for",
-    hero_title_highlight: "Documentation work,Real Estate & Legal Services",
+    hero_title_highlight: "Documentation work, Properties Buying & Selling, Income Tax & Legal Opinion",
     hero_desc: "Documentation, Properties buying & Selling, insurance, Hajj & Umrah — all under one roof.",
     btn_call: "Call Now",
     btn_whatsapp: "WhatsApp",

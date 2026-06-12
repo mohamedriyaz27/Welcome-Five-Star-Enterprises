@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { 
-  Phone, MessageCircle, Calendar, FileText, Scale, Building2, 
-  Globe, Plane, Printer, Landmark, Gavel, Home as HomeIcon, 
-  Heart, Stamp, FileSignature, Briefcase, GraduationCap, Award, 
-  Baby, Shield, FileCheck, Languages, ClipboardCheck, Lightbulb, 
-  Zap, Lock, Clock, Wallet, Eye, Route, ChevronDown, MapPin 
+import {
+  Phone, MessageCircle, Calendar, FileText, Scale, Building2,
+  Globe, Plane, Printer, Landmark, Gavel, Home as HomeIcon,
+  Heart, Stamp, FileSignature, Briefcase, GraduationCap, Award,
+  Baby, Shield, FileCheck, Languages, ClipboardCheck, Lightbulb,
+  Zap, Lock, Clock, Wallet, Eye, Route, ChevronDown, MapPin
 } from "lucide-react";
 import { useApp } from "../../context/AppContext";
 import { useAlert } from "../../context/AlertContext";
@@ -15,12 +15,12 @@ import inquiryService from "../../services/inquiryService";
 export function Home() {
   const { t, business } = useApp();
   const { showAlert } = useAlert();
-  
+
   // States
   const [featuredProperties, setFeaturedProperties] = useState([]);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [faqOpen, setFaqOpen] = useState(null);
-  
+
   // Property Modal States
   const [selectedProperty, setSelectedProperty] = useState(null);
   const [enquiryForm, setEnquiryForm] = useState({ name: "", phone: "", message: "" });
@@ -69,7 +69,7 @@ export function Home() {
           let startYears = 0;
           let startServices = 0;
           let startProperties = 0;
-          
+
           const interval = setInterval(() => {
             let completed = true;
             if (startClients < 2500) {
@@ -101,7 +101,7 @@ export function Home() {
 
             if (completed) clearInterval(interval);
           }, 30);
-          
+
           observer.disconnect();
         }
       },
@@ -160,7 +160,7 @@ export function Home() {
     e.preventDefault();
     const nameErr = !contactForm.name.trim();
     const phoneErr = !contactForm.phone.trim() || !/^[6-9]\d{9}$/.test(contactForm.phone.replace(/\D/g, "").slice(-10));
-    
+
     setContactErrors({ name: nameErr, phone: phoneErr });
     if (nameErr || phoneErr) return;
 
@@ -210,7 +210,7 @@ export function Home() {
             </a>
           </div>
           <div className="hero-owner">
-            <span data-i18n="owner_label">{t("owner_label")}</span>: <strong>{business.owner}</strong> · {business.phones[0].slice(0,5)} {business.phones[0].slice(5)} · {business.phones[1].slice(0,5)} {business.phones[1].slice(5)}
+            <span data-i18n="owner_label">{t("owner_label")}</span>: <strong>{business.owner}</strong> · {business.phones[0].slice(0, 5)} {business.phones[0].slice(5)} · {business.phones[1].slice(0, 5)} {business.phones[1].slice(5)}
           </div>
         </div>
       </section>
@@ -235,16 +235,21 @@ export function Home() {
               <Link to="/legal-services" className="btn btn-outline btn-sm" style={{ marginTop: "0.5rem" }}>Learn More</Link>
             </div>
             <div className="service-card fade-in visible">
+              <div className="icon"><Globe/></div>
+              <h3>Business Registration</h3>
+              <ul className="service-list">
+                <li>Proprietorship Registration</li>
+                <li>Partnership Registration</li>
+                <li>LLP Registration</li>
+                <li>Company Registration</li>
+              </ul>
+              <Link to="/contact" className="btn btn-outline btn-sm" style={{ marginTop: "1rem" }}>Learn More</Link>
+            </div>
+            <div className="service-card fade-in visible">
               <div className="icon"><Building2 /></div>
               <h3>Real Estate</h3>
               <p>Land, House, Commercial properties, legal verification</p>
               <Link to="/properties" className="btn btn-outline btn-sm" style={{ marginTop: "1rem" }}>View Properties</Link>
-            </div>
-            <div className="service-card fade-in visible">
-              <div className="icon"><Globe /></div>
-              <h3>Online Services</h3>
-              <p>PAN, Aadhaar, Passport, Motor & Health Insurance</p>
-              <Link to="/online-services" className="btn btn-outline btn-sm" style={{ marginTop: "1rem" }}>Learn More</Link>
             </div>
             <div className="service-card fade-in visible">
               <div className="icon"><Plane /></div>
@@ -327,7 +332,7 @@ export function Home() {
       {/* Attestations */}
       <section className="section premium-block" id="attestation">
         <div className="container">
-          <h2 className="section-title fade-in visible">N.Gopinath<br/>Certificate Attestation & <span>HRD Services</span></h2>
+          <h2 className="section-title fade-in visible">N.Gopinath<br />Certificate Attestation & <span>HRD Services</span></h2>
           <p className="section-subtitle fade-in visible">Complete assistance for educational, personal, and professional certificates</p>
           <div className="attest-grid fade-in visible">
             <div className="attest-chip"><GraduationCap /> SSLC Certificates</div>
@@ -364,10 +369,21 @@ export function Home() {
       {/* Embassy Services */}
       <section className="section section-gradient-alt" id="embassy">
         <div className="container">
-          <h2 className="section-title fade-in visible">Embassy & <span>International Services</span></h2>
-          <p className="section-subtitle fade-in visible">Embassy attestation, visa documentation, and certified translation</p>
+          <h2 className="section-title fade-in visible">Syed Irfan <br />Embassy & <span>International Services</span></h2>
+          <p className="section-subtitle fade-in visible">Countless active vacancies are available across Gulf countries
+            (UAE, Saudi Arabia, Qatar, Oman) for candidates in Drivers, Cook,
+            Housemad, housekeeper, shopkeeper, helper, salesman, supervisors,
+            manager, engineering, healthcare, oil & gas, IT, and hospitality.
+            Typical entry requirements include relevant experience and trade/degree certifications.</p>
           <div className="card-grid" style={{ marginTop: "2rem" }}>
-            <article className="service-card fade-in visible"><div className="icon"><Shield /></div><h3>Embassy Attestation</h3><ul className="service-list"><li>UAE · Saudi Arabia · Kuwait</li><li>Oman · Bahrain · Qatar</li><li>Europe</li><li>Other GCC Countries</li></ul></article>
+            <article className="service-card fade-in visible"><div className="icon"><Shield /></div>
+              <h3>Embassy Attestation</h3>
+              <ul className="service-list">
+                <li>UAE · Saudi Arabia </li>
+                <li>Oman · Bahrain · Qatar</li>
+                <li>Kuwait</li>
+                <li>Other GCC Countries</li>
+              </ul></article>
             <article className="service-card fade-in visible"><div className="icon"><Plane /></div><h3>Visa Documentation</h3><ul className="service-list"><li>Employment Visa Documents</li><li>Family Visa Documents</li><li>Educational Documents</li><li>Commercial Documents</li></ul></article>
             <article className="service-card fade-in visible"><div className="icon"><Languages /></div><h3>Translation Services</h3><ul className="service-list"><li>Arabic Translation</li><li>English Translation</li><li>Multilingual Translation</li><li>Certified Translation</li></ul></article>
           </div>
@@ -381,7 +397,16 @@ export function Home() {
           <h2 className="section-title fade-in visible">Business & <span>Registration Services</span></h2>
           <p className="section-subtitle fade-in visible">Business registration, compliance, and consultancy services</p>
           <div className="card-grid" style={{ marginTop: "2rem" }}>
-            <article className="service-card fade-in visible"><div className="icon"><Building2 /></div><h3>Business Registration</h3><ul className="service-list"><li>Proprietorship Registration</li><li>Partnership Registration</li><li>LLP Registration</li><li>Company Registration</li></ul></article>
+            <article className="service-card fade-in visible">
+              <div className="icon"><Building2 /></div>
+              <h3>Business Registration</h3>
+              <ul className="service-list">
+                <li>Proprietorship Registration</li>
+                <li>Partnership Registration</li>
+                <li>LLP Registration</li>
+                <li>Company Registration</li>
+              </ul>
+            </article>
             <article className="service-card fade-in visible"><div className="icon"><ClipboardCheck /></div><h3>Compliance Services</h3><ul className="service-list"><li>MSME Registration</li><li>Trade License</li><li>Professional Tax</li><li>Business Documentation</li></ul></article>
             <article className="service-card fade-in visible"><div className="icon"><Lightbulb /></div><h3>Consultancy Services</h3><ul className="service-list"><li>Overseas Education Consultancy</li><li>Marriage Registration Assistance</li><li>Certificate Verification</li><li>Legal Documentation Support</li></ul></article>
           </div>
@@ -442,7 +467,7 @@ export function Home() {
           <p style={{ textAlign: "center", marginTop: "2rem", color: "var(--gold-400)", fontSize: "1.2rem", fontFamily: "var(--font-display)" }}>Your Rights. Our Responsibility.</p>
           <p style={{ textAlign: "center", color: "var(--gray-400)", fontSize: "0.9rem" }}>Advocate | Legal Consultant | Documentation & Attestation Services</p>
           <p style={{ textAlign: "center", marginTop: "0.75rem" }}>
-            Phone: <a href={`tel:${business.phones[0]}`} style={{ color: "var(--gold-400)" }}>{business.phones[0].slice(0,5)} {business.phones[0].slice(5)}</a> · WhatsApp: <a href={`https://wa.me/${business.whatsapp}`} style={{ color: "var(--gold-400)" }}>{business.phones[0].slice(0,5)} {business.phones[0].slice(5)}</a>
+            Phone: <a href={`tel:${business.phones[0]}`} style={{ color: "var(--gold-400)" }}>{business.phones[0].slice(0, 5)} {business.phones[0].slice(5)}</a> · WhatsApp: <a href={`https://wa.me/${business.whatsapp}`} style={{ color: "var(--gold-400)" }}>{business.phones[0].slice(0, 5)} {business.phones[0].slice(5)}</a>
           </p>
         </div>
       </section>
@@ -515,9 +540,9 @@ export function Home() {
             ))}
             <div className="testimonial-dots">
               {testimonials.map((_, index) => (
-                <button 
+                <button
                   key={index}
-                  className={activeTestimonial === index ? "active" : ""} 
+                  className={activeTestimonial === index ? "active" : ""}
                   onClick={() => setActiveTestimonial(index)}
                   aria-label={`Slide ${index + 1}`}
                 ></button>
@@ -533,7 +558,7 @@ export function Home() {
           <h2 className="section-title" data-i18n="cta_title">{t("cta_title")}</h2>
           <p className="section-subtitle" style={{ margin: "0 auto 2rem" }} data-i18n="cta_sub">{t("cta_sub")}</p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem", justifyContent: "center" }}>
-            <a href={`tel:${business.phones[0]}`} className="btn btn-primary"><Phone style={{ width: 16, height: 16, marginRight: 6 }} /> {business.phones[0].slice(0,5)} {business.phones[0].slice(5)}</a>
+            <a href={`tel:${business.phones[0]}`} className="btn btn-primary"><Phone style={{ width: 16, height: 16, marginRight: 6 }} /> {business.phones[0].slice(0, 5)} {business.phones[0].slice(5)}</a>
             <a href={`https://wa.me/${business.whatsapp}`} className="btn btn-green" target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
             <a href="#contact-form-section" className="btn btn-outline">Contact Form</a>
           </div>
@@ -549,38 +574,38 @@ export function Home() {
             <form id="contact-form" onSubmit={handleContactSubmit}>
               <div className={`form-group ${contactErrors.name ? "invalid" : ""}`}>
                 <label data-i18n="form_name">{t("form_name")}</label>
-                <input 
-                  name="name" 
-                  value={contactForm.name} 
+                <input
+                  name="name"
+                  value={contactForm.name}
                   onChange={(e) => setContactForm({ ...contactForm, name: e.target.value })}
-                  placeholder="Your name" 
+                  placeholder="Your name"
                 />
                 <span className="error">Name is required</span>
               </div>
               <div className={`form-group ${contactErrors.phone ? "invalid" : ""}`}>
                 <label data-i18n="form_phone">{t("form_phone")}</label>
-                <input 
-                  name="phone" 
-                  value={contactForm.phone} 
+                <input
+                  name="phone"
+                  value={contactForm.phone}
                   onChange={(e) => setContactForm({ ...contactForm, phone: e.target.value })}
-                  placeholder="10-digit mobile" 
+                  placeholder="10-digit mobile"
                 />
                 <span className="error">Valid phone required</span>
               </div>
               <div className="form-group">
                 <label data-i18n="form_email">{t("form_email")}</label>
-                <input 
-                  name="email" 
-                  type="email" 
-                  value={contactForm.email} 
+                <input
+                  name="email"
+                  type="email"
+                  value={contactForm.email}
                   onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
-                  placeholder="email@example.com" 
+                  placeholder="email@example.com"
                 />
               </div>
               <div className="form-group">
                 <label>Service Required</label>
-                <select 
-                  name="service" 
+                <select
+                  name="service"
                   value={contactForm.service}
                   onChange={(e) => setContactForm({ ...contactForm, service: e.target.value })}
                 >
@@ -599,9 +624,9 @@ export function Home() {
               </div>
               <div className="form-group">
                 <label data-i18n="form_message">{t("form_message")}</label>
-                <textarea 
-                  name="message" 
-                  rows="4" 
+                <textarea
+                  name="message"
+                  rows="4"
                   value={contactForm.message}
                   onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
                   placeholder="How can we help?"
@@ -614,13 +639,13 @@ export function Home() {
           <div>
             <h3 style={{ marginBottom: "1rem", color: "var(--gold-400)" }}>Our Location</h3>
             <div className="map-container">
-              <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.702204749426!2d80.10190037128653!3d12.99088908204286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52613126e7ec65%3A0x3fd801522cc1bdef!2sWelcome%20Enterprises!5e0!3m2!1sen!2sin!4v1780416238825!5m2!1sen!2sin" 
-                width="600" 
-                height="450" 
-                style={{ border: 0 }} 
-                allowFullScreen="" 
-                loading="lazy" 
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.702204749426!2d80.10190037128653!3d12.99088908204286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52613126e7ec65%3A0x3fd801522cc1bdef!2sWelcome%20Enterprises!5e0!3m2!1sen!2sin!4v1780416238825!5m2!1sen!2sin"
+                width="600"
+                height="450"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 title="Welcome Enterprises Map"
               ></iframe>
@@ -642,33 +667,33 @@ export function Home() {
               <p><strong>Area:</strong> {selectedProperty.area}</p>
               <p><strong>Type:</strong> {selectedProperty.type}</p>
               <p style={{ marginTop: "0.75rem" }}>{selectedProperty.description}</p>
-              
+
               <form id="property-enquiry" style={{ marginTop: "1.5rem" }} onSubmit={handlePropertyEnquiry}>
                 <div className="form-group">
                   <label>Name</label>
-                  <input 
-                    name="name" 
-                    value={enquiryForm.name} 
+                  <input
+                    name="name"
+                    value={enquiryForm.name}
                     onChange={(e) => setEnquiryForm({ ...enquiryForm, name: e.target.value })}
-                    required 
+                    required
                   />
                 </div>
                 <div className="form-group">
                   <label>Phone</label>
-                  <input 
-                    name="phone" 
-                    type="tel" 
-                    pattern="[6-9][0-9]{9}" 
+                  <input
+                    name="phone"
+                    type="tel"
+                    pattern="[6-9][0-9]{9}"
                     value={enquiryForm.phone}
                     onChange={(e) => setEnquiryForm({ ...enquiryForm, phone: e.target.value })}
-                    required 
-                    placeholder="10-digit mobile number" 
+                    required
+                    placeholder="10-digit mobile number"
                   />
                 </div>
                 <div className="form-group">
                   <label>Message</label>
-                  <textarea 
-                    name="message" 
+                  <textarea
+                    name="message"
                     rows="2"
                     value={enquiryForm.message}
                     onChange={(e) => setEnquiryForm({ ...enquiryForm, message: e.target.value })}
