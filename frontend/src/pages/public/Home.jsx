@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { 
-  Phone, MessageCircle, Calendar, FileText, Scale, Building2, 
-  Globe, Plane, Printer, Landmark, Gavel, Home as HomeIcon, 
-  Heart, Stamp, FileSignature, Briefcase, GraduationCap, Award, 
-  Baby, Shield, FileCheck, Languages, ClipboardCheck, Lightbulb, 
-  Zap, Lock, Clock, Wallet, Eye, Route, ChevronDown, MapPin 
+import {
+  Phone, MessageCircle, Calendar, FileText, Scale, Building2,
+  Globe, Plane, Printer, Landmark, Gavel, Home as HomeIcon,
+  Heart, Stamp, FileSignature, Briefcase, GraduationCap, Award,
+  Baby, Shield, FileCheck, Languages, ClipboardCheck, Lightbulb,
+  Zap, Lock, Clock, Wallet, Eye, Route, ChevronDown, MapPin
 } from "lucide-react";
 import { useApp } from "../../context/AppContext";
 import { useAlert } from "../../context/AlertContext";
@@ -15,12 +15,12 @@ import inquiryService from "../../services/inquiryService";
 export function Home() {
   const { t, business } = useApp();
   const { showAlert } = useAlert();
-  
+
   // States
   const [featuredProperties, setFeaturedProperties] = useState([]);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [faqOpen, setFaqOpen] = useState(null);
-  
+
   // Property Modal States
   const [selectedProperty, setSelectedProperty] = useState(null);
   const [enquiryForm, setEnquiryForm] = useState({ name: "", phone: "", message: "" });
@@ -69,7 +69,7 @@ export function Home() {
           let startYears = 0;
           let startServices = 0;
           let startProperties = 0;
-          
+
           const interval = setInterval(() => {
             let completed = true;
             if (startClients < 2500) {
@@ -101,7 +101,7 @@ export function Home() {
 
             if (completed) clearInterval(interval);
           }, 30);
-          
+
           observer.disconnect();
         }
       },
@@ -160,7 +160,7 @@ export function Home() {
     e.preventDefault();
     const nameErr = !contactForm.name.trim();
     const phoneErr = !contactForm.phone.trim() || !/^[6-9]\d{9}$/.test(contactForm.phone.replace(/\D/g, "").slice(-10));
-    
+
     setContactErrors({ name: nameErr, phone: phoneErr });
     if (nameErr || phoneErr) return;
 
@@ -210,7 +210,7 @@ export function Home() {
             </a>
           </div>
           <div className="hero-owner">
-            <span data-i18n="owner_label">{t("owner_label")}</span>: <strong>{business.owner}</strong> · {business.phones[0].slice(0,5)} {business.phones[0].slice(5)} · {business.phones[1].slice(0,5)} {business.phones[1].slice(5)}
+            <span data-i18n="owner_label">{t("owner_label")}</span>: <strong>{business.owner}</strong> · {business.phones[0].slice(0, 5)} {business.phones[0].slice(5)} · {business.phones[1].slice(0, 5)} {business.phones[1].slice(5)}
           </div>
         </div>
       </section>
@@ -225,7 +225,12 @@ export function Home() {
               <div className="icon"><FileText /></div>
               <h3>Documentation</h3>
               <p>EC (Encumbrance Certificate), Document Copy, Marriage Registration, Legal Heir, Online TP, Patta Chitta, Notary</p>
-              <Link to="/services" className="btn btn-outline btn-sm" style={{ marginTop: "1rem" }}>Learn More</Link>
+              <div style={{ display: "flex", gap: "0.5rem", marginTop: "1rem" }}>
+                <Link to="/services" className="btn btn-outline btn-sm">Learn More</Link>
+                <a href="#documentation-coverage" className="btn btn-outline btn-sm" style={{ border: "1px solid rgba(201,162,39,0.3)", display: "inline-flex", alignItems: "center" }}>
+                  <MapPin style={{ width: 12, height: 12, marginRight: 4 }} /> Areas
+                </a>
+              </div>
             </div>
             <div className="service-card fade-in visible">
               <div className="icon"><Scale /></div>
@@ -235,16 +240,21 @@ export function Home() {
               <Link to="/legal-services" className="btn btn-outline btn-sm" style={{ marginTop: "0.5rem" }}>Learn More</Link>
             </div>
             <div className="service-card fade-in visible">
+              <div className="icon"><Globe/></div>
+              <h3>Business Registration</h3>
+              <ul className="service-list">
+                <li>Proprietorship Registration</li>
+                <li>Partnership Registration</li>
+                <li>LLP Registration</li>
+                <li>Company Registration</li>
+              </ul>
+              <Link to="/contact" className="btn btn-outline btn-sm" style={{ marginTop: "1rem" }}>Learn More</Link>
+            </div>
+            <div className="service-card fade-in visible">
               <div className="icon"><Building2 /></div>
               <h3>Real Estate</h3>
               <p>Land, House, Commercial properties, legal verification</p>
               <Link to="/properties" className="btn btn-outline btn-sm" style={{ marginTop: "1rem" }}>View Properties</Link>
-            </div>
-            <div className="service-card fade-in visible">
-              <div className="icon"><Globe /></div>
-              <h3>Online Services</h3>
-              <p>PAN, Aadhaar, Passport, Motor & Health Insurance</p>
-              <Link to="/online-services" className="btn btn-outline btn-sm" style={{ marginTop: "1rem" }}>Learn More</Link>
             </div>
             <div className="service-card fade-in visible">
               <div className="icon"><Plane /></div>
@@ -315,7 +325,22 @@ export function Home() {
             <article className="service-card fade-in visible"><div className="icon"><Landmark /></div><h3>Civil Cases</h3><ul className="service-list"><li>Property disputes</li><li>Recovery suits</li><li>Injunction matters</li><li>Contract disputes</li><li>Consumer cases</li></ul></article>
             <article className="service-card fade-in visible"><div className="icon"><Gavel /></div><h3>Criminal Cases</h3><ul class="service-list"><li>Bail petitions</li><li>Criminal defense</li><li>Quash petitions</li><li>Trial matters</li><li>Legal representation</li></ul></article>
             <article className="service-card fade-in visible"><div className="icon"><HomeIcon /></div><h3>Property Registration</h3><ul class="service-list"><li>Sale deed registration</li><li>Settlement deeds</li><li>Gift deeds</li><li>Property verification</li><li>Legal opinions</li></ul></article>
-            <article className="service-card fade-in visible"><div className="icon"><FileText /></div><h3>Documentation Work</h3><ul class="service-list"><li>Affidavits</li><li>Agreements</li><li>Power of Attorney</li><li>Legal notices</li><li>Will preparation</li></ul></article>
+            <article className="service-card fade-in visible">
+              <div className="icon"><FileText /></div>
+              <h3>Documentation Work</h3>
+              <ul className="service-list">
+                <li>Affidavits</li>
+                <li>Agreements</li>
+                <li>Power of Attorney</li>
+                <li>Legal notices</li>
+                <li>Will preparation</li>
+              </ul>
+              <div style={{ marginTop: "1rem", paddingTop: "0.75rem", borderTop: "1px solid rgba(255,255,255,0.1)" }}>
+                <a href="#documentation-coverage" style={{ display: "inline-flex", alignItems: "center", gap: "0.25rem", color: "var(--gold-400)", fontSize: "0.85rem", fontWeight: 600 }}>
+                  <MapPin style={{ width: 12, height: 12 }} /> View Service Areas
+                </a>
+              </div>
+            </article>
             <article className="service-card fade-in visible"><div className="icon"><Heart /></div><h3>Family & Divorce Cases</h3><ul class="service-list"><li>Divorce petitions</li><li>Child custody</li><li>Maintenance cases</li><li>Mutual consent divorce</li><li>Family settlements</li></ul></article>
             <article className="service-card fade-in visible"><div className="icon"><Stamp /></div><h3>Notary Services</h3><ul class="service-list"><li>Notary attestation</li><li>Oath administration</li><li>Affidavit notarization</li><li>Document certification</li></ul></article>
             <article className="service-card fade-in visible"><div className="icon"><FileSignature /></div><h3>Sale Deed & Legal Deeds</h3><ul class="service-list"><li>Sale Deed · Trust Deed</li><li>GPA · Settlement Deed</li><li>Release · Partition Deed</li><li>Partnership Deed · Will</li><li>Bank MOD Documentation</li></ul></article>
@@ -324,10 +349,87 @@ export function Home() {
         </div>
       </section>
 
+      {/* Documentation Service Coverage Areas */}
+      <section className="section section-gradient-alt" id="documentation-coverage">
+        <div className="container">
+          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+            <span className="hero-badge fade-in visible" style={{ display: "inline-block", marginBottom: "1rem" }}>
+              Service Locations
+            </span>
+            <h2 className="section-title fade-in visible">Documentation <span>Coverage Areas</span></h2>
+            <p className="section-subtitle fade-in visible" style={{ marginInline: "auto" }}>
+              Our expert documentation, drafting, and registration services are exclusively offered in the following regions:
+            </p>
+          </div>
+
+          <div className="card-grid" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))" }}>
+            <div className="service-card fade-in visible" style={{ border: "1px solid rgba(201, 162, 39, 0.2)" }}>
+              <div className="icon" style={{ background: "rgba(201, 162, 39, 0.1)", color: "var(--gold-400)" }}>
+                <MapPin style={{ width: 24, height: 24 }} />
+              </div>
+              <h3 style={{ color: "var(--gold-400)", marginBottom: "1rem", fontFamily: "var(--font-display)" }}>Chennai City</h3>
+              <ul style={{ display: "grid", gap: "0.5rem", listStyle: "none", padding: 0 }}>
+                {["Adyar", "Alandur", "Anna Nagar", "Chennai Central", "Chennai North", "Chennai South", "Saidapet", "T Nagar", "Virugambakkam"].map((loc) => (
+                  <li key={loc} style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--gray-300)", fontSize: "0.95rem" }}>
+                    <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "var(--gold-400)", flexShrink: 0 }}></span>
+                    {loc}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="service-card fade-in visible" style={{ border: "1px solid rgba(201, 162, 39, 0.2)" }}>
+              <div className="icon" style={{ background: "rgba(201, 162, 39, 0.1)", color: "var(--gold-400)" }}>
+                <MapPin style={{ width: 24, height: 24 }} />
+              </div>
+              <h3 style={{ color: "var(--gold-400)", marginBottom: "1rem", fontFamily: "var(--font-display)" }}>Tambaram Line</h3>
+              <ul style={{ display: "grid", gap: "0.5rem", listStyle: "none", padding: 0 }}>
+                {["Pallavaram", "Pammal", "Tambaram", "Vandalur", "Guduvanchery", "Chengalpattu"].map((loc) => (
+                  <li key={loc} style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--gray-300)", fontSize: "0.95rem" }}>
+                    <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "var(--gold-400)", flexShrink: 0 }}></span>
+                    {loc}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="service-card fade-in visible" style={{ border: "1px solid rgba(201, 162, 39, 0.2)" }}>
+              <div className="icon" style={{ background: "rgba(201, 162, 39, 0.1)", color: "var(--gold-400)" }}>
+                <MapPin style={{ width: 24, height: 24 }} />
+              </div>
+              <h3 style={{ color: "var(--gold-400)", marginBottom: "1rem", fontFamily: "var(--font-display)" }}>Sriperumbudur Line</h3>
+              <ul style={{ display: "grid", gap: "0.5rem", listStyle: "none", padding: 0 }}>
+                {["Kundrathur", "Padappai", "Poonamallee", "Sriperumbudur", "Sunguvachattran"].map((loc) => (
+                  <li key={loc} style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--gray-300)", fontSize: "0.95rem" }}>
+                    <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "var(--gold-400)", flexShrink: 0 }}></span>
+                    {loc}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="service-card fade-in visible" style={{ border: "1px solid rgba(201, 162, 39, 0.2)" }}>
+              <div className="icon" style={{ background: "rgba(201, 162, 39, 0.1)", color: "var(--gold-400)" }}>
+                <MapPin style={{ width: 24, height: 24 }} />
+              </div>
+              <h3 style={{ color: "var(--gold-400)", marginBottom: "1rem", fontFamily: "var(--font-display)" }}>Avadi & Tiruvallur Line</h3>
+              <ul style={{ display: "grid", gap: "0.5rem", listStyle: "none", padding: 0 }}>
+                {["Ambattur", "Avadi", "Tiruvallur"].map((loc) => (
+                  <li key={loc} style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--gray-300)", fontSize: "0.95rem" }}>
+                    <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "var(--gold-400)", flexShrink: 0 }}></span>
+                    {loc}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Attestations */}
       <section className="section premium-block" id="attestation">
         <div className="container">
-          <h2 className="section-title fade-in visible">N.Gopinath<br/>Certificate Attestation & <span>HRD Services</span></h2>
+          <h2 className="section-title fade-in visible">N.Gopinath<br />Certificate Attestation & <span>HRD Services</span></h2>
           <p className="section-subtitle fade-in visible">Complete assistance for educational, personal, and professional certificates</p>
           <div className="attest-grid fade-in visible">
             <div className="attest-chip"><GraduationCap /> SSLC Certificates</div>
@@ -364,10 +466,34 @@ export function Home() {
       {/* Embassy Services */}
       <section className="section section-gradient-alt" id="embassy">
         <div className="container">
-          <h2 className="section-title fade-in visible">Embassy & <span>International Services</span></h2>
-          <p className="section-subtitle fade-in visible">Embassy attestation, visa documentation, and certified translation</p>
+          <h2 className="section-title fade-in visible" style={{ fontSize: "clamp(2rem, 4vw, 2.75rem)" }}>
+            Syed Irfan
+          </h2>
+          <h3 className="section-title fade-in visible" style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)", marginTop: "-0.5rem", marginBottom: "1.25rem", color: "var(--white)" }}>
+            Embassy & <span>International Services</span>
+          </h3>
+          <div className="fade-in visible" style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem", marginBottom: "1.5rem" }}>
+            <a href="tel:+971554601778" className="btn btn-outline btn-sm">
+              <Phone style={{ width: 14, height: 14 }} /> +971 55 460 1778
+            </a>
+            <a href="https://wa.me/971554601778" className="btn btn-green btn-sm" target="_blank" rel="noopener noreferrer">
+              <MessageCircle style={{ width: 14, height: 14 }} /> WhatsApp
+            </a>
+          </div>
+          <p className="section-subtitle fade-in visible">Countless active vacancies are available across Gulf countries
+            (UAE, Saudi Arabia, Qatar, Oman) for candidates in Drivers, Cook,
+            Housemad, housekeeper, shopkeeper, helper, salesman, supervisors,
+            manager, engineering, healthcare, oil & gas, IT, and hospitality.
+            Typical entry requirements include relevant experience and trade/degree certifications.</p>
           <div className="card-grid" style={{ marginTop: "2rem" }}>
-            <article className="service-card fade-in visible"><div className="icon"><Shield /></div><h3>Embassy Attestation</h3><ul className="service-list"><li>UAE · Saudi Arabia · Kuwait</li><li>Oman · Bahrain · Qatar</li><li>Europe</li><li>Other GCC Countries</li></ul></article>
+            <article className="service-card fade-in visible"><div className="icon"><Shield /></div>
+              <h3>Embassy Attestation</h3>
+              <ul className="service-list">
+                <li>UAE · Saudi Arabia </li>
+                <li>Oman · Bahrain · Qatar</li>
+                <li>Kuwait</li>
+                <li>Other GCC Countries</li>
+              </ul></article>
             <article className="service-card fade-in visible"><div className="icon"><Plane /></div><h3>Visa Documentation</h3><ul className="service-list"><li>Employment Visa Documents</li><li>Family Visa Documents</li><li>Educational Documents</li><li>Commercial Documents</li></ul></article>
             <article className="service-card fade-in visible"><div className="icon"><Languages /></div><h3>Translation Services</h3><ul className="service-list"><li>Arabic Translation</li><li>English Translation</li><li>Multilingual Translation</li><li>Certified Translation</li></ul></article>
           </div>
@@ -381,7 +507,16 @@ export function Home() {
           <h2 className="section-title fade-in visible">Business & <span>Registration Services</span></h2>
           <p className="section-subtitle fade-in visible">Business registration, compliance, and consultancy services</p>
           <div className="card-grid" style={{ marginTop: "2rem" }}>
-            <article className="service-card fade-in visible"><div className="icon"><Building2 /></div><h3>Business Registration</h3><ul className="service-list"><li>Proprietorship Registration</li><li>Partnership Registration</li><li>LLP Registration</li><li>Company Registration</li></ul></article>
+            <article className="service-card fade-in visible">
+              <div className="icon"><Building2 /></div>
+              <h3>Business Registration</h3>
+              <ul className="service-list">
+                <li>Proprietorship Registration</li>
+                <li>Partnership Registration</li>
+                <li>LLP Registration</li>
+                <li>Company Registration</li>
+              </ul>
+            </article>
             <article className="service-card fade-in visible"><div className="icon"><ClipboardCheck /></div><h3>Compliance Services</h3><ul className="service-list"><li>MSME Registration</li><li>Trade License</li><li>Professional Tax</li><li>Business Documentation</li></ul></article>
             <article className="service-card fade-in visible"><div className="icon"><Lightbulb /></div><h3>Consultancy Services</h3><ul className="service-list"><li>Overseas Education Consultancy</li><li>Marriage Registration Assistance</li><li>Certificate Verification</li><li>Legal Documentation Support</li></ul></article>
           </div>
@@ -442,7 +577,7 @@ export function Home() {
           <p style={{ textAlign: "center", marginTop: "2rem", color: "var(--gold-400)", fontSize: "1.2rem", fontFamily: "var(--font-display)" }}>Your Rights. Our Responsibility.</p>
           <p style={{ textAlign: "center", color: "var(--gray-400)", fontSize: "0.9rem" }}>Advocate | Legal Consultant | Documentation & Attestation Services</p>
           <p style={{ textAlign: "center", marginTop: "0.75rem" }}>
-            Phone: <a href={`tel:${business.phones[0]}`} style={{ color: "var(--gold-400)" }}>{business.phones[0].slice(0,5)} {business.phones[0].slice(5)}</a> · WhatsApp: <a href={`https://wa.me/${business.whatsapp}`} style={{ color: "var(--gold-400)" }}>{business.phones[0].slice(0,5)} {business.phones[0].slice(5)}</a>
+            Phone: <a href={`tel:${business.phones[0]}`} style={{ color: "var(--gold-400)" }}>{business.phones[0].slice(0, 5)} {business.phones[0].slice(5)}</a> · WhatsApp: <a href={`https://wa.me/${business.whatsapp}`} style={{ color: "var(--gold-400)" }}>{business.phones[0].slice(0, 5)} {business.phones[0].slice(5)}</a>
           </p>
         </div>
       </section>
@@ -515,9 +650,9 @@ export function Home() {
             ))}
             <div className="testimonial-dots">
               {testimonials.map((_, index) => (
-                <button 
+                <button
                   key={index}
-                  className={activeTestimonial === index ? "active" : ""} 
+                  className={activeTestimonial === index ? "active" : ""}
                   onClick={() => setActiveTestimonial(index)}
                   aria-label={`Slide ${index + 1}`}
                 ></button>
@@ -533,7 +668,7 @@ export function Home() {
           <h2 className="section-title" data-i18n="cta_title">{t("cta_title")}</h2>
           <p className="section-subtitle" style={{ margin: "0 auto 2rem" }} data-i18n="cta_sub">{t("cta_sub")}</p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem", justifyContent: "center" }}>
-            <a href={`tel:${business.phones[0]}`} className="btn btn-primary"><Phone style={{ width: 16, height: 16, marginRight: 6 }} /> {business.phones[0].slice(0,5)} {business.phones[0].slice(5)}</a>
+            <a href={`tel:${business.phones[0]}`} className="btn btn-primary"><Phone style={{ width: 16, height: 16, marginRight: 6 }} /> {business.phones[0].slice(0, 5)} {business.phones[0].slice(5)}</a>
             <a href={`https://wa.me/${business.whatsapp}`} className="btn btn-green" target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
             <a href="#contact-form-section" className="btn btn-outline">Contact Form</a>
           </div>
@@ -549,38 +684,38 @@ export function Home() {
             <form id="contact-form" onSubmit={handleContactSubmit}>
               <div className={`form-group ${contactErrors.name ? "invalid" : ""}`}>
                 <label data-i18n="form_name">{t("form_name")}</label>
-                <input 
-                  name="name" 
-                  value={contactForm.name} 
+                <input
+                  name="name"
+                  value={contactForm.name}
                   onChange={(e) => setContactForm({ ...contactForm, name: e.target.value })}
-                  placeholder="Your name" 
+                  placeholder="Your name"
                 />
                 <span className="error">Name is required</span>
               </div>
               <div className={`form-group ${contactErrors.phone ? "invalid" : ""}`}>
                 <label data-i18n="form_phone">{t("form_phone")}</label>
-                <input 
-                  name="phone" 
-                  value={contactForm.phone} 
+                <input
+                  name="phone"
+                  value={contactForm.phone}
                   onChange={(e) => setContactForm({ ...contactForm, phone: e.target.value })}
-                  placeholder="10-digit mobile" 
+                  placeholder="10-digit mobile"
                 />
                 <span className="error">Valid phone required</span>
               </div>
               <div className="form-group">
                 <label data-i18n="form_email">{t("form_email")}</label>
-                <input 
-                  name="email" 
-                  type="email" 
-                  value={contactForm.email} 
+                <input
+                  name="email"
+                  type="email"
+                  value={contactForm.email}
                   onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
-                  placeholder="email@example.com" 
+                  placeholder="email@example.com"
                 />
               </div>
               <div className="form-group">
                 <label>Service Required</label>
-                <select 
-                  name="service" 
+                <select
+                  name="service"
                   value={contactForm.service}
                   onChange={(e) => setContactForm({ ...contactForm, service: e.target.value })}
                 >
@@ -599,9 +734,9 @@ export function Home() {
               </div>
               <div className="form-group">
                 <label data-i18n="form_message">{t("form_message")}</label>
-                <textarea 
-                  name="message" 
-                  rows="4" 
+                <textarea
+                  name="message"
+                  rows="4"
                   value={contactForm.message}
                   onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
                   placeholder="How can we help?"
@@ -614,13 +749,13 @@ export function Home() {
           <div>
             <h3 style={{ marginBottom: "1rem", color: "var(--gold-400)" }}>Our Location</h3>
             <div className="map-container">
-              <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.702204749426!2d80.10190037128653!3d12.99088908204286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52613126e7ec65%3A0x3fd801522cc1bdef!2sWelcome%20Enterprises!5e0!3m2!1sen!2sin!4v1780416238825!5m2!1sen!2sin" 
-                width="600" 
-                height="450" 
-                style={{ border: 0 }} 
-                allowFullScreen="" 
-                loading="lazy" 
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.702204749426!2d80.10190037128653!3d12.99088908204286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52613126e7ec65%3A0x3fd801522cc1bdef!2sWelcome%20Enterprises!5e0!3m2!1sen!2sin!4v1780416238825!5m2!1sen!2sin"
+                width="600"
+                height="450"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 title="Welcome Enterprises Map"
               ></iframe>
@@ -642,33 +777,33 @@ export function Home() {
               <p><strong>Area:</strong> {selectedProperty.area}</p>
               <p><strong>Type:</strong> {selectedProperty.type}</p>
               <p style={{ marginTop: "0.75rem" }}>{selectedProperty.description}</p>
-              
+
               <form id="property-enquiry" style={{ marginTop: "1.5rem" }} onSubmit={handlePropertyEnquiry}>
                 <div className="form-group">
                   <label>Name</label>
-                  <input 
-                    name="name" 
-                    value={enquiryForm.name} 
+                  <input
+                    name="name"
+                    value={enquiryForm.name}
                     onChange={(e) => setEnquiryForm({ ...enquiryForm, name: e.target.value })}
-                    required 
+                    required
                   />
                 </div>
                 <div className="form-group">
                   <label>Phone</label>
-                  <input 
-                    name="phone" 
-                    type="tel" 
-                    pattern="[6-9][0-9]{9}" 
+                  <input
+                    name="phone"
+                    type="tel"
+                    pattern="[6-9][0-9]{9}"
                     value={enquiryForm.phone}
                     onChange={(e) => setEnquiryForm({ ...enquiryForm, phone: e.target.value })}
-                    required 
-                    placeholder="10-digit mobile number" 
+                    required
+                    placeholder="10-digit mobile number"
                   />
                 </div>
                 <div className="form-group">
                   <label>Message</label>
-                  <textarea 
-                    name="message" 
+                  <textarea
+                    name="message"
                     rows="2"
                     value={enquiryForm.message}
                     onChange={(e) => setEnquiryForm({ ...enquiryForm, message: e.target.value })}
