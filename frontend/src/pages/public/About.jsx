@@ -1,13 +1,37 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Award, Target, CheckCircle, Scale, Briefcase, Gavel } from "lucide-react";
-import { useApp } from "../../context/AppContext";
+import Seo from "../../components/common/Seo";
 
 export function About() {
-  const { t } = useApp();
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://welcomefivestarenterprises.in/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "About Us",
+        "item": "https://welcomefivestarenterprises.in/about"
+      }
+    ]
+  };
 
   return (
     <>
+      <Seo 
+        title="About Us"
+        description="Learn about Welcome Enterprises (Taj Real Estate & Legal Services), under the expert leadership of S.T. Syed Imran, M.A., in Tamil Nadu."
+        canonical="/about"
+        schema={breadcrumbSchema}
+      />
       <header className="page-header">
         <div className="container">
           <h1>About <span style={{ color: "var(--gold-400)" }}>Us</span></h1>

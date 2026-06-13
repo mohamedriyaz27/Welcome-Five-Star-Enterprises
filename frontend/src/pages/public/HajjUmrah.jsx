@@ -2,12 +2,57 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Moon, Plane, Map, Stamp } from "lucide-react";
 import { useApp } from "../../context/AppContext";
+import Seo from "../../components/common/Seo";
 
 export function HajjUmrah() {
   const { business } = useApp();
 
+  const hajjUmrahSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://welcomefivestarenterprises.in/hajj-umrah/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://welcomefivestarenterprises.in/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Hajj & Umrah",
+            "item": "https://welcomefivestarenterprises.in/hajj-umrah"
+          }
+        ]
+      },
+      {
+        "@type": "TravelAgency",
+        "name": "Welcome Hajj & Umrah Services",
+        "description": "Premium Hajj booking and customized Umrah packages with full visa processing, travel, and accommodation assistance.",
+        "telephone": "+91-9003088794",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Taj Real Estate Office, Kundrathur Road",
+          "addressLocality": "Chennai",
+          "addressRegion": "TN",
+          "postalCode": "600075",
+          "addressCountry": "IN"
+        }
+      }
+    ]
+  };
+
   return (
     <>
+      <Seo 
+        title="Hajj & Umrah Travel Packages"
+        description="Plan your sacred pilgrimage with premium Hajj bookings, economic and custom Umrah packages, flight tickets, and visa processing services in Chennai."
+        canonical="/hajj-umrah"
+        schema={hajjUmrahSchema}
+      />
       <header className="page-header" style={{ background: "linear-gradient(135deg, var(--navy-900), rgba(45, 106, 79, 0.4))" }}>
         <div className="container">
           <h1>Hajj & <span style={{ color: "var(--gold-400)" }}>Umrah</span></h1>

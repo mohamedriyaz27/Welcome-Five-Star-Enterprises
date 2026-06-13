@@ -3,11 +3,11 @@ import { MapPin } from "lucide-react";
 import { useAlert } from "../../context/AlertContext";
 import propertyService from "../../services/propertyService";
 import inquiryService from "../../services/inquiryService";
+import Seo from "../../components/common/Seo";
 
 export function Properties() {
   const { showAlert } = useAlert();
   const [properties, setProperties] = useState([]);
-  const [filteredProperties, setFilteredProperties] = useState([]);
   const [locations, setLocations] = useState([]);
   
   // Filter States
@@ -25,7 +25,6 @@ export function Properties() {
     async function fetchProperties() {
       const data = await propertyService.getProperties();
       setProperties(data);
-      setFilteredProperties(data);
 
       // Populate unique locations
       const uniqueLocs = [...new Set(data.map((p) => p.location))];
@@ -34,25 +33,16 @@ export function Properties() {
     fetchProperties();
   }, []);
 
-  // Filter handler
-  useEffect(() => {
-    let result = [...properties];
-
-    if (filterLocation) {
-      result = result.filter((p) => p.location === filterLocation);
-    }
-
-    if (filterType) {
-      result = result.filter((p) => p.type === filterType);
-    }
-
+  // Compute filtered properties on demand during render to prevent cascading state update renders
+  const filteredProperties = properties.filter((p) => {
+    if (filterLocation && p.location !== filterLocation) return false;
+    if (filterType && p.type !== filterType) return false;
     if (filterBudget) {
       const maxBudget = parseInt(filterBudget, 10);
-      result = result.filter((p) => p.price <= maxBudget);
+      if (p.price > maxBudget) return false;
     }
-
-    setFilteredProperties(result);
-  }, [filterLocation, filterBudget, filterType, properties]);
+    return true;
+  });
 
   // Format price helper
   const formatPrice = (n) => {
@@ -92,8 +82,45 @@ export function Properties() {
     }
   };
 
+  const propertiesSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://welcomefivestarenterprises.in/properties/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://welcomefivestarenterprises.in/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Properties",
+            "item": "https://welcomefivestarenterprises.in/properties"
+          }
+        ]
+      },
+      {
+        "@type": "RealEstateAgent",
+        "name": "Taj Real Estate",
+        "description": "Taj Real Estate offers premium lands, homes, and commercial properties for buying and selling in Chennai and Tamil Nadu.",
+        "telephone": "+91-9003088794",
+        "priceRange": "$$"
+      }
+    ]
+  };
+
   return (
     <>
+      <Seo 
+        title="Featured Properties & Land Listings"
+        description="Browse premium real estate, land layouts, homes, and commercial properties for buying and selling in Chennai and surrounding districts."
+        canonical="/properties"
+        schema={propertiesSchema}
+      />
       <header className="page-header">
         <div className="container">
           <h1>Property <span style={{ color: "var(--gold-400)" }}>Listings</span></h1>
@@ -145,7 +172,14 @@ export function Properties() {
             ) : (
               filteredProperties.map((p) => (
                 <article key={p.id} className="property-card fade-in visible">
-                  <img src={p.image} alt={p.title} loading="lazy" />
+                  <img 
+                    src={p.image} 
+                    alt={`${p.title} - Taj Real Estate Listing`} 
+                    width="400" 
+                    height="220" 
+                    style={{ width: "100%", height: "220px", objectFit: "cover" }} 
+                    loading="lazy" 
+                  />
                   <div className="body">
                     <div className="price">{formatPrice(p.price)}</div>
                     <h3>{p.title}</h3>
@@ -179,7 +213,13 @@ export function Properties() {
             <button className="modal-close" onClick={() => setSelectedProperty(null)}>&times;</button>
             <h3 id="modal-title">{selectedProperty.title}</h3>
             <div id="modal-body">
-              <img src={selectedProperty.image} alt={selectedProperty.title} style={{ borderRadius: "12px", marginBottom: "1rem", width: "100%" }} />
+              <img 
+                 src={selectedProperty.image} 
+                 alt={`${selectedProperty.title} - Detailed Property View`} 
+                 width="500" 
+                 height="375" 
+                 style={{ borderRadius: "12px", marginBottom: "1rem", width: "100%", height: "auto", objectFit: "cover" }} 
+              />
               <p><strong>Price:</strong> {formatPrice(selectedProperty.price)}</p>
               <p><strong>Location:</strong> {selectedProperty.location}</p>
               <p><strong>Area:</strong> {selectedProperty.area}</p>
