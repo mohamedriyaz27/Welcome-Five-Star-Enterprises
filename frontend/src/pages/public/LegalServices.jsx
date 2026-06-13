@@ -7,24 +7,72 @@ import {
   Languages, ClipboardCheck, Lightbulb, Eye, Lock, Clock, Wallet, Zap, Route
 } from "lucide-react";
 import { useApp } from "../../context/AppContext";
+import Seo from "../../components/common/Seo";
 
 export function LegalServices() {
-  const { t, business } = useApp();
+  const { business } = useApp();
   const [faqOpen, setFaqOpen] = useState(null);
 
   const toggleFaq = (index) => {
     setFaqOpen((prev) => (prev === index ? null : index));
   };
 
+  const legalServicesSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://welcomefivestarenterprises.in/legal-services/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://welcomefivestarenterprises.in/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Legal Services",
+            "item": "https://welcomefivestarenterprises.in/legal-services"
+          }
+        ]
+      },
+      {
+        "@type": "LegalService",
+        "name": "Advocate Farook Ahamed & Associates Legal Consultancy",
+        "description": "Professional advocates representing clients in civil, criminal, family disputes, notary attestation, and property documentation.",
+        "url": "https://welcomefivestarenterprises.in/legal-services",
+        "telephone": "+91-9003088794",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Taj Real Estate Office, Kundrathur Road",
+          "addressLocality": "Chennai",
+          "addressRegion": "TN",
+          "postalCode": "600075",
+          "addressCountry": "IN"
+        }
+      }
+    ]
+  };
+
   return (
     <>
+      <Seo 
+        title="Legal Services & Advocates"
+        description="Consult Adv. Farook Ahamed, B.A., B.L. & associates for civil cases, criminal defense, property registration, family court matters, and notary services."
+        canonical="/legal-services"
+        schema={legalServicesSchema}
+      />
       <header className="advocate-banner">
         <div className="container advocate-banner-grid">
           <div>
             <span className="advocate-badge">Advocate · High Court · District Court</span>
-            <h1>Adv. Farook Ahamed, B.A., B.L.,</h1>
-            <h1>Adv. K. Venkatesh MBA., L.L.B.,</h1>
-            <h1>Adv. A. Mohammed Ansarullah M.B.A., ML.,</h1>
+            <h1 style={{ fontSize: "inherit", fontWeight: "inherit", margin: 0 }}>
+              <span style={{ display: "block", fontSize: "clamp(2rem, 4vw, 2.75rem)", fontWeight: 700, margin: "0.67em 0" }}>Adv. Farook Ahamed, B.A., B.L.,</span>
+              <span style={{ display: "block", fontSize: "clamp(2rem, 4vw, 2.75rem)", fontWeight: 700, margin: "0.67em 0" }}>Adv. K. Venkatesh MBA., L.L.B.,</span>
+              <span style={{ display: "block", fontSize: "clamp(2rem, 4vw, 2.75rem)", fontWeight: 700, margin: "0.67em 0" }}>Adv. A. Mohammed Ansarullah M.B.A., ML.,</span>
+            </h1>
             <p className="sub">Advocate | High Court | District Court</p>
             <p className="quote">"Committed to Justice. Dedicated to You."</p>
             <p style={{ color: "var(--gray-300)", maxWidth: "600px", marginBottom: "1.5rem" }}>

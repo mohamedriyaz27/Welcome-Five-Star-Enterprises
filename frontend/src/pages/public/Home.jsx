@@ -11,6 +11,7 @@ import { useApp } from "../../context/AppContext";
 import { useAlert } from "../../context/AlertContext";
 import propertyService from "../../services/propertyService";
 import inquiryService from "../../services/inquiryService";
+import Seo from "../../components/common/Seo";
 
 export function Home() {
   const { t, business } = useApp();
@@ -186,8 +187,60 @@ export function Home() {
     }
   };
 
+  const homeSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://welcomefivestarenterprises.in/#organization",
+        "name": "Welcome Five Star Enterprises",
+        "url": "https://welcomefivestarenterprises.in",
+        "logo": "https://welcomefivestarenterprises.in/src/assets/logo.png",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+91-9003088794",
+          "contactType": "customer support"
+        }
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://welcomefivestarenterprises.in/#localbusiness",
+        "name": "Welcome Enterprises & Taj Real Estate",
+        "image": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1920&q=80",
+        "url": "https://welcomefivestarenterprises.in",
+        "telephone": "+91-9003088794",
+        "priceRange": "$$",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Taj Real Estate Office, Kundrathur Road",
+          "addressLocality": "Chennai",
+          "addressRegion": "TN",
+          "postalCode": "600075",
+          "addressCountry": "IN"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 12.990889,
+          "longitude": 80.101900
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://welcomefivestarenterprises.in/#website",
+        "name": "Welcome Five Star Enterprises",
+        "url": "https://welcomefivestarenterprises.in"
+      }
+    ]
+  };
+
   return (
     <>
+      <Seo 
+        title="Welcome Enterprises & Taj Real Estate"
+        description="Documentation drafting, Taj Real Estate buying & selling, Advocate Legal consultation, and Hajj & Umrah package bookings in Chennai, Tamil Nadu."
+        canonical="/"
+        schema={homeSchema}
+      />
       {/* Hero Section */}
       <section className="hero">
         <div className="hero-bg"></div>
@@ -294,7 +347,14 @@ export function Home() {
             </div>
           </div>
           <div className="advocate-hero-img fade-in visible">
-            <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=700&q=85" alt="Advocates Office" loading="lazy" />
+            <img 
+              src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=700&q=85" 
+              alt="Advocates Office - Welcome Enterprises Legal Consultant" 
+              width="700" 
+              height="466" 
+              style={{ width: "100%", height: "auto", objectFit: "cover" }} 
+              loading="lazy" 
+            />
           </div>
         </div>
       </section>
@@ -614,7 +674,14 @@ export function Home() {
           <div className="card-grid" id="home-property-grid">
             {featuredProperties.map((p) => (
               <article key={p.id} className="property-card fade-in visible">
-                <img src={p.image} alt={p.title} loading="lazy" />
+                <img 
+                  src={p.image} 
+                  alt={`${p.title} - Taj Real Estate`} 
+                  width="400" 
+                  height="220" 
+                  style={{ width: "100%", height: "220px", objectFit: "cover" }} 
+                  loading="lazy" 
+                />
                 <div className="body">
                   <div className="price">{formatPrice(p.price)}</div>
                   <h3>{p.title}</h3>
@@ -771,7 +838,13 @@ export function Home() {
             <button className="modal-close" onClick={() => setSelectedProperty(null)} aria-label="Close">&times;</button>
             <h3 id="modal-title">{selectedProperty.title}</h3>
             <div id="modal-body">
-              <img src={selectedProperty.image} alt={selectedProperty.title} style={{ borderRadius: "12px", marginBottom: "1rem", width: "100%" }} />
+              <img 
+                src={selectedProperty.image} 
+                alt={`${selectedProperty.title} - Detailed Property View`} 
+                width="500" 
+                height="375" 
+                style={{ borderRadius: "12px", marginBottom: "1rem", width: "100%", height: "auto", objectFit: "cover" }} 
+              />
               <p><strong>Price:</strong> {formatPrice(selectedProperty.price)}</p>
               <p><strong>Location:</strong> {selectedProperty.location}</p>
               <p><strong>Area:</strong> {selectedProperty.area}</p>

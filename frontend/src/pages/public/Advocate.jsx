@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { useAlert } from "../../context/AlertContext";
 import "../../styles/advocate.css";
+import Seo from "../../components/common/Seo";
 
 export function Advocate() {
   const { showAlert } = useAlert();
@@ -124,8 +125,52 @@ export function Advocate() {
     setFaqOpenIndex((prev) => (prev === idx ? null : idx));
   };
 
+  const advocateSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://welcomefivestarenterprises.in/advocate/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://welcomefivestarenterprises.in/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Advocates",
+            "item": "https://welcomefivestarenterprises.in/advocate"
+          }
+        ]
+      },
+      {
+        "@type": "LegalService",
+        "name": "Adv. Farook Ahamed, B.A., B.L. Advocate & Legal Consultant",
+        "description": "Expert legal guidance in Chennai for Civil litigation, Criminal litigation, Property disputes, and Family settlements.",
+        "telephone": "+91-9003088794",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Taj Real Estate Office, Kundrathur Road",
+          "addressLocality": "Chennai",
+          "addressRegion": "TN",
+          "postalCode": "600075",
+          "addressCountry": "IN"
+        }
+      }
+    ]
+  };
+
   return (
     <div className="advocate-page">
+      <Seo 
+        title="Advocates & Legal Consultation"
+        description="Expert legal advice and litigation representation by Adv. Farook Ahamed, B.A., B.L., Adv. K. Venkatesh, MBA, LL.B., and Adv. A. Mohammed Ansarullah, MBA, M.L."
+        canonical="/advocate"
+        schema={advocateSchema}
+      />
       {/* NAVBAR */}
       <header className={`navbar ${scrolled ? "scrolled" : ""}`}>
         <div className="container nav-inner">
@@ -168,9 +213,11 @@ export function Advocate() {
             <div className="hero-badge">
               <Scale size={16} /> Advocate · High Court · District Court
             </div>
-            <h1>Adv. Farook Ahamed, B.A., B.L.,</h1>
-            <h1>Adv. K. Venkatesh MBA., L.L.B.,</h1>
-            <h1>Adv. A. Mohammed Ansarullah M.B.A., ML.</h1>
+            <h1 style={{ fontSize: "inherit", fontWeight: "inherit", margin: 0 }}>
+              <span style={{ display: "block", fontSize: "clamp(2rem, 4.5vw, 3.25rem)", fontWeight: 700, margin: "0.67em 0" }}>Adv. Farook Ahamed, B.A., B.L.,</span>
+              <span style={{ display: "block", fontSize: "clamp(2rem, 4.5vw, 3.25rem)", fontWeight: 700, margin: "0.67em 0" }}>Adv. K. Venkatesh MBA., L.L.B.,</span>
+              <span style={{ display: "block", fontSize: "clamp(2rem, 4.5vw, 3.25rem)", fontWeight: 700, margin: "0.67em 0" }}>Adv. A. Mohammed Ansarullah M.B.A., ML.</span>
+            </h1>
             <p className="credentials">Advocate | High Court | District Court</p>
             <p className="tagline">"Committed to Justice. Dedicated to You."</p>
             <div className="hero-buttons">
@@ -200,7 +247,14 @@ export function Advocate() {
       <section className="section section-alt" id="about">
         <div className="container about-grid">
           <div className="about-image reveal">
-            <img src="https://images.unsplash.com/photo-1589391886645-d51941baf7fb?w=600&q=80" alt="About Adv. Farook Ahamed, B.A., B.L.," loading="lazy" />
+            <img 
+              src="https://images.unsplash.com/photo-1589391886645-d51941baf7fb?w=600&q=80" 
+              alt="About Adv. Farook Ahamed, B.A., B.L. - Welcome Enterprises Legal Consultant" 
+              width="600"
+              height="400"
+              style={{ width: "100%", height: "auto", objectFit: "cover" }}
+              loading="lazy" 
+            />
             <div className="accent"></div>
           </div>
           <div className="reveal">

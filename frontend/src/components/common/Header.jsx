@@ -30,7 +30,7 @@ export function Header() {
     { href: "/contact", key: "nav_contact", id: "contact" },
   ];
 
-  const activePage = pages.find((p) => p.href === location.pathname)?.id || "";
+
 
   return (
     <header className={`navbar ${scrolled ? "scrolled" : ""}`}>

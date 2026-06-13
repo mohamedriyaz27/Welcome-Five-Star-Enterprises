@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Plus, Edit, Trash, Search, Star, MapPin, X, Check } from "lucide-react";
+import { Plus, Edit, Trash, Search, Star, MapPin, X } from "lucide-react";
 import { useAlert } from "../../context/AlertContext";
 import propertyService from "../../services/propertyService";
 
@@ -56,6 +56,7 @@ export function Properties() {
 
   useEffect(() => {
     loadProperties();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Filter and search logic

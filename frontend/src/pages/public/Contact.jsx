@@ -3,6 +3,7 @@ import { User, Phone, MessageCircle, MapPin } from "lucide-react";
 import { useApp } from "../../context/AppContext";
 import { useAlert } from "../../context/AlertContext";
 import inquiryService from "../../services/inquiryService";
+import Seo from "../../components/common/Seo";
 
 export function Contact() {
   const { business } = useApp();
@@ -41,8 +42,52 @@ export function Contact() {
     }
   };
 
+  const contactSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://welcomefivestarenterprises.in/contact/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://welcomefivestarenterprises.in/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Contact Us",
+            "item": "https://welcomefivestarenterprises.in/contact"
+          }
+        ]
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://welcomefivestarenterprises.in/#localbusiness",
+        "name": "Welcome Enterprises & Taj Real Estate",
+        "telephone": "+91-9003088794",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Taj Real Estate Office, Kundrathur Road",
+          "addressLocality": "Chennai",
+          "addressRegion": "TN",
+          "postalCode": "600075",
+          "addressCountry": "IN"
+        }
+      }
+    ]
+  };
+
   return (
     <>
+      <Seo 
+        title="Contact Us - Support & Inquiries"
+        description="Get in touch with Welcome Enterprises & Taj Real Estate in Chennai for registration advice, legal assistance, property deals, or attestation inquiries."
+        canonical="/contact"
+        schema={contactSchema}
+      />
       <header className="page-header">
         <div className="container">
           <h1>Contact <span style={{ color: "var(--gold-400)" }}>Us</span></h1>
@@ -92,30 +137,37 @@ export function Contact() {
 
             <form id="contact-form" style={{ marginTop: "2rem" }} onSubmit={handleSubmit}>
               <div className={`form-group ${errors.name ? "invalid" : ""}`}>
-                <label>Name *</label>
+                <label htmlFor="contact-name">Name *</label>
                 <input 
+                  id="contact-name"
                   name="name" 
                   value={form.name} 
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
                   required 
+                  aria-required="true"
+                  aria-invalid={errors.name ? "true" : "false"}
                 />
                 <span className="error">Required</span>
               </div>
               
               <div className={`form-group ${errors.phone ? "invalid" : ""}`}>
-                <label>Phone *</label>
+                <label htmlFor="contact-phone">Phone *</label>
                 <input 
+                  id="contact-phone"
                   name="phone" 
                   value={form.phone} 
                   onChange={(e) => setForm({ ...form, phone: e.target.value })}
                   required 
+                  aria-required="true"
+                  aria-invalid={errors.phone ? "true" : "false"}
                 />
                 <span className="error">Valid phone required</span>
               </div>
               
               <div className="form-group">
-                <label>Email</label>
+                <label htmlFor="contact-email">Email</label>
                 <input 
+                  id="contact-email"
                   name="email" 
                   type="email" 
                   value={form.email} 
@@ -124,8 +176,9 @@ export function Contact() {
               </div>
               
               <div className="form-group">
-                <label>Service Needed</label>
+                <label htmlFor="contact-service">Service Needed</label>
                 <select 
+                  id="contact-service"
                   name="service" 
                   value={form.service}
                   onChange={(e) => setForm({ ...form, service: e.target.value })}
@@ -140,8 +193,9 @@ export function Contact() {
               </div>
               
               <div className="form-group">
-                <label>Message</label>
+                <label htmlFor="contact-message">Message</label>
                 <textarea 
+                  id="contact-message"
                   name="message" 
                   rows="4"
                   value={form.message}
