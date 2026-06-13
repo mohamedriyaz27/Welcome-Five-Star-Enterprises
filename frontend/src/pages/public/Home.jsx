@@ -225,7 +225,12 @@ export function Home() {
               <div className="icon"><FileText /></div>
               <h3>Documentation</h3>
               <p>EC (Encumbrance Certificate), Document Copy, Marriage Registration, Legal Heir, Online TP, Patta Chitta, Notary</p>
-              <Link to="/services" className="btn btn-outline btn-sm" style={{ marginTop: "1rem" }}>Learn More</Link>
+              <div style={{ display: "flex", gap: "0.5rem", marginTop: "1rem" }}>
+                <Link to="/services" className="btn btn-outline btn-sm">Learn More</Link>
+                <a href="#documentation-coverage" className="btn btn-outline btn-sm" style={{ border: "1px solid rgba(201,162,39,0.3)", display: "inline-flex", alignItems: "center" }}>
+                  <MapPin style={{ width: 12, height: 12, marginRight: 4 }} /> Areas
+                </a>
+              </div>
             </div>
             <div className="service-card fade-in visible">
               <div className="icon"><Scale /></div>
@@ -320,11 +325,103 @@ export function Home() {
             <article className="service-card fade-in visible"><div className="icon"><Landmark /></div><h3>Civil Cases</h3><ul className="service-list"><li>Property disputes</li><li>Recovery suits</li><li>Injunction matters</li><li>Contract disputes</li><li>Consumer cases</li></ul></article>
             <article className="service-card fade-in visible"><div className="icon"><Gavel /></div><h3>Criminal Cases</h3><ul class="service-list"><li>Bail petitions</li><li>Criminal defense</li><li>Quash petitions</li><li>Trial matters</li><li>Legal representation</li></ul></article>
             <article className="service-card fade-in visible"><div className="icon"><HomeIcon /></div><h3>Property Registration</h3><ul class="service-list"><li>Sale deed registration</li><li>Settlement deeds</li><li>Gift deeds</li><li>Property verification</li><li>Legal opinions</li></ul></article>
-            <article className="service-card fade-in visible"><div className="icon"><FileText /></div><h3>Documentation Work</h3><ul class="service-list"><li>Affidavits</li><li>Agreements</li><li>Power of Attorney</li><li>Legal notices</li><li>Will preparation</li></ul></article>
+            <article className="service-card fade-in visible">
+              <div className="icon"><FileText /></div>
+              <h3>Documentation Work</h3>
+              <ul className="service-list">
+                <li>Affidavits</li>
+                <li>Agreements</li>
+                <li>Power of Attorney</li>
+                <li>Legal notices</li>
+                <li>Will preparation</li>
+              </ul>
+              <div style={{ marginTop: "1rem", paddingTop: "0.75rem", borderTop: "1px solid rgba(255,255,255,0.1)" }}>
+                <a href="#documentation-coverage" style={{ display: "inline-flex", alignItems: "center", gap: "0.25rem", color: "var(--gold-400)", fontSize: "0.85rem", fontWeight: 600 }}>
+                  <MapPin style={{ width: 12, height: 12 }} /> View Service Areas
+                </a>
+              </div>
+            </article>
             <article className="service-card fade-in visible"><div className="icon"><Heart /></div><h3>Family & Divorce Cases</h3><ul class="service-list"><li>Divorce petitions</li><li>Child custody</li><li>Maintenance cases</li><li>Mutual consent divorce</li><li>Family settlements</li></ul></article>
             <article className="service-card fade-in visible"><div className="icon"><Stamp /></div><h3>Notary Services</h3><ul class="service-list"><li>Notary attestation</li><li>Oath administration</li><li>Affidavit notarization</li><li>Document certification</li></ul></article>
             <article className="service-card fade-in visible"><div className="icon"><FileSignature /></div><h3>Sale Deed & Legal Deeds</h3><ul class="service-list"><li>Sale Deed · Trust Deed</li><li>GPA · Settlement Deed</li><li>Release · Partition Deed</li><li>Partnership Deed · Will</li><li>Bank MOD Documentation</li></ul></article>
             <article className="service-card fade-in visible"><div className="icon"><Briefcase /></div><h3>Legal Consultancy</h3><ul class="service-list"><li>Legal opinion & advice</li><li>Court case consultation</li><li>Property legal verification</li><li>Marriage registration assistance</li><li>End-to-end legal support</li></ul></article>
+          </div>
+        </div>
+      </section>
+
+      {/* Documentation Service Coverage Areas */}
+      <section className="section section-gradient-alt" id="documentation-coverage">
+        <div className="container">
+          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+            <span className="hero-badge fade-in visible" style={{ display: "inline-block", marginBottom: "1rem" }}>
+              Service Locations
+            </span>
+            <h2 className="section-title fade-in visible">Documentation <span>Coverage Areas</span></h2>
+            <p className="section-subtitle fade-in visible" style={{ marginInline: "auto" }}>
+              Our expert documentation, drafting, and registration services are exclusively offered in the following regions:
+            </p>
+          </div>
+
+          <div className="card-grid" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))" }}>
+            <div className="service-card fade-in visible" style={{ border: "1px solid rgba(201, 162, 39, 0.2)" }}>
+              <div className="icon" style={{ background: "rgba(201, 162, 39, 0.1)", color: "var(--gold-400)" }}>
+                <MapPin style={{ width: 24, height: 24 }} />
+              </div>
+              <h3 style={{ color: "var(--gold-400)", marginBottom: "1rem", fontFamily: "var(--font-display)" }}>Chennai City</h3>
+              <ul style={{ display: "grid", gap: "0.5rem", listStyle: "none", padding: 0 }}>
+                {["Adyar", "Alandur", "Anna Nagar", "Chennai Central", "Chennai North", "Chennai South", "Saidapet", "T Nagar", "Virugambakkam"].map((loc) => (
+                  <li key={loc} style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--gray-300)", fontSize: "0.95rem" }}>
+                    <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "var(--gold-400)", flexShrink: 0 }}></span>
+                    {loc}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="service-card fade-in visible" style={{ border: "1px solid rgba(201, 162, 39, 0.2)" }}>
+              <div className="icon" style={{ background: "rgba(201, 162, 39, 0.1)", color: "var(--gold-400)" }}>
+                <MapPin style={{ width: 24, height: 24 }} />
+              </div>
+              <h3 style={{ color: "var(--gold-400)", marginBottom: "1rem", fontFamily: "var(--font-display)" }}>Tambaram Line</h3>
+              <ul style={{ display: "grid", gap: "0.5rem", listStyle: "none", padding: 0 }}>
+                {["Pallavaram", "Pammal", "Tambaram", "Vandalur", "Guduvanchery", "Chengalpattu"].map((loc) => (
+                  <li key={loc} style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--gray-300)", fontSize: "0.95rem" }}>
+                    <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "var(--gold-400)", flexShrink: 0 }}></span>
+                    {loc}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="service-card fade-in visible" style={{ border: "1px solid rgba(201, 162, 39, 0.2)" }}>
+              <div className="icon" style={{ background: "rgba(201, 162, 39, 0.1)", color: "var(--gold-400)" }}>
+                <MapPin style={{ width: 24, height: 24 }} />
+              </div>
+              <h3 style={{ color: "var(--gold-400)", marginBottom: "1rem", fontFamily: "var(--font-display)" }}>Sriperumbudur Line</h3>
+              <ul style={{ display: "grid", gap: "0.5rem", listStyle: "none", padding: 0 }}>
+                {["Kundrathur", "Padappai", "Poonamallee", "Sriperumbudur", "Sunguvachattran"].map((loc) => (
+                  <li key={loc} style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--gray-300)", fontSize: "0.95rem" }}>
+                    <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "var(--gold-400)", flexShrink: 0 }}></span>
+                    {loc}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="service-card fade-in visible" style={{ border: "1px solid rgba(201, 162, 39, 0.2)" }}>
+              <div className="icon" style={{ background: "rgba(201, 162, 39, 0.1)", color: "var(--gold-400)" }}>
+                <MapPin style={{ width: 24, height: 24 }} />
+              </div>
+              <h3 style={{ color: "var(--gold-400)", marginBottom: "1rem", fontFamily: "var(--font-display)" }}>Avadi & Tiruvallur Line</h3>
+              <ul style={{ display: "grid", gap: "0.5rem", listStyle: "none", padding: 0 }}>
+                {["Ambattur", "Avadi", "Tiruvallur"].map((loc) => (
+                  <li key={loc} style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--gray-300)", fontSize: "0.95rem" }}>
+                    <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "var(--gold-400)", flexShrink: 0 }}></span>
+                    {loc}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </section>
@@ -369,7 +466,20 @@ export function Home() {
       {/* Embassy Services */}
       <section className="section section-gradient-alt" id="embassy">
         <div className="container">
-          <h2 className="section-title fade-in visible">Syed Irfan <br />Embassy & <span>International Services</span></h2>
+          <h2 className="section-title fade-in visible" style={{ fontSize: "clamp(2rem, 4vw, 2.75rem)" }}>
+            Syed Irfan
+          </h2>
+          <h3 className="section-title fade-in visible" style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)", marginTop: "-0.5rem", marginBottom: "1.25rem", color: "var(--white)" }}>
+            Embassy & <span>International Services</span>
+          </h3>
+          <div className="fade-in visible" style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem", marginBottom: "1.5rem" }}>
+            <a href="tel:+971554601778" className="btn btn-outline btn-sm">
+              <Phone style={{ width: 14, height: 14 }} /> +971 55 460 1778
+            </a>
+            <a href="https://wa.me/971554601778" className="btn btn-green btn-sm" target="_blank" rel="noopener noreferrer">
+              <MessageCircle style={{ width: 14, height: 14 }} /> WhatsApp
+            </a>
+          </div>
           <p className="section-subtitle fade-in visible">Countless active vacancies are available across Gulf countries
             (UAE, Saudi Arabia, Qatar, Oman) for candidates in Drivers, Cook,
             Housemad, housekeeper, shopkeeper, helper, salesman, supervisors,

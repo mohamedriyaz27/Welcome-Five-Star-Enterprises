@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { 
+import {
   ArrowLeft, Menu, Scale, Calendar, MessageCircle, Phone, ShieldCheck, FileCheck, Globe, Users,
   Landmark, Gavel, Home as HomeIcon, FileText, Heart, Stamp, Briefcase, GraduationCap,
   Award, Baby, Shield, Fingerprint, Building, Flag, Plane, Languages, Building2,
@@ -98,7 +98,7 @@ export function Advocate() {
     const fd = new FormData(form);
     const name = fd.get("name")?.toString().trim();
     const phone = fd.get("phone")?.toString().trim();
-    
+
     if (!name || !phone) {
       showAlert("Please fill in name and phone number.", "error");
       return;
@@ -114,7 +114,7 @@ export function Advocate() {
       message: fd.get("message") || "",
       date: new Date().toISOString(),
     });
-    
+
     localStorage.setItem("advocate_inquiries", JSON.stringify(inquiries));
     showAlert("Thank you! Your consultation request has been received. We will contact you shortly.", "success");
     form.reset();
